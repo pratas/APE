@@ -108,7 +108,7 @@ if [[ "$GET_MTDNA" -eq "1" ]]; then
   cat MITO.fna | tr ' ' '_' \
   | ./goose-extractreadbypattern Papio_anubis > MT_AN.fa
   cat MITO.fna | tr ' ' '_' \
-  | ./goose-extractreadbypattern Callithrix jacchus > MT_CJ.fa
+  | ./goose-extractreadbypattern Callithrix_jacchus > MT_CJ.fa
 fi
 #==============================================================================
 ###############################################################################

@@ -1,2 +1,1 @@
-# APE
-Accelaration Patterns of Evolution
+APE - Accelaration Patterns of Evolution

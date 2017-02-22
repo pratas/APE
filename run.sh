@@ -45,30 +45,50 @@ fi
 #==============================================================================
 if [[ "$GET_HUMAN" -eq "1" ]]; then
   . GetHumanParse.sh
+  cat HS* > DFGSERGF
+  mv DFGSERGF HS
 fi
 #==============================================================================
 if [[ "$GET_CHIMPANZEE" -eq "1" ]]; then
   . GetChimpParse.sh
+  rm -f PT24 PT25 PT26 PT27
+  cat PT* > DFGSERGF
+  mv DFGSERGF PT
 fi
 #==============================================================================
 if [[ "$GET_GORILLA" -eq "1" ]]; then
   . GetGorillaParse.sh
+  rm -f GG24 GG25 
+  cat GG* > DFGSERGF
+  mv DFGSERGF GG
 fi
 #==============================================================================
 if [[ "$GET_ORANGUTAN" -eq "1" ]]; then
   . GetOrangutanParse.sh
+  rm -f PA24 PA25 PA26
+  cat PA* > DFGSERGF
+  mv DFGSERGF PA
 fi
 #==============================================================================
 if [[ "$GET_GIBBON" -eq "1" ]]; then
   . GetGibbonParse.sh
+  rm -f GB GB27 GB28 
+  cat GB* > DFGSERGF
+  mv DFGSERGF GB
 fi
 #==============================================================================
 if [[ "$GET_ANUBIS" -eq "1" ]]; then
   . GetAnubisParse.sh
+  rm -f AN AN22
+  cat AN* > DFGSERGF
+  mv DFGSERGF AN
 fi
 #==============================================================================
 if [[ "$GET_MARMOSET" -eq "1" ]]; then
   . GetCallithrixjacchus.sh
+  rm -f CJ24 CJ25 CJ26
+  cat CJ* > DFGSERGF
+  mv DFGSERGF CJ
 fi
 #==============================================================================
 # GET MITOCHONDRIAS

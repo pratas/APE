@@ -1,7 +1,7 @@
 #!/bin/bash
 #==============================================================================
 #
-# WARNING: YOU NEED APPROX. 100 GB OF FREE DISK
+# WARNING: YOU NEED APPROX. 20 GB OF FREE DISK
 #
 # RUNNING FLAGS
 GET_GOOSE=0;

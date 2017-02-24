@@ -151,7 +151,7 @@ if [[ "$PLOT" -eq "1" ]]; then
   set ytics 0.2
   set grid 
   set xtics rotate by -30
-  set ylabel "NRS"
+  set ylabel "NRC"
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue

@@ -144,7 +144,7 @@ if [[ "$PLOT" -eq "1" ]]; then
   set tics nomirror out scale 0.75
   set format '%g'
   set size ratio 0.8
-  set key outside center top
+  set key outside horiz center top
   set xtics ("Chimpanzee" 1, "Gorilla" 2, "Orangutan" 3, "Gibbon" 4, "Babbon" 5, "Marmoset" 6)
   set yrange [0:1] 
   set xrange [0.5:6.5] 

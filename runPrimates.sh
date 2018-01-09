@@ -102,12 +102,12 @@ if [[ "$GET_MTDNA" -eq "1" ]]; then
   #
   cat MITO.fna | tr ' ' '_' \
   | ./goose-extractreadbypattern sapiens_mitoch | ./goose-fasta2seq > MT_HS.seq
+  #cat MITO.fna | tr ' ' '_' \
+  #| ./goose-extractreadbypattern troglodytes | ./goose-fasta2seq > MT_PT.seq
   cat MITO.fna | tr ' ' '_' \
-  | ./goose-extractreadbypattern troglodytes | ./goose-fasta2seq > MT_PT.seq
-    cat MITO.fna | tr ' ' '_' \
   | ./goose-extractreadbypattern Gorilla_gorilla_gorilla | ./goose-fasta2seq > MT_GG.seq
-    cat MITO.fna | tr ' ' '_' \
-  | ./goose-extractreadbypattern abelii | ./goose-fasta2seq > MT_PA.seq
+  #cat MITO.fna | tr ' ' '_' \
+  #| ./goose-extractreadbypattern abelii | ./goose-fasta2seq > MT_PA.seq
   cat MITO.fna | tr ' ' '_' \
   | ./goose-extractreadbypattern Nomascus_leucogenys | ./goose-fasta2seq > MT_GB.seq
   cat MITO.fna | tr ' ' '_' \

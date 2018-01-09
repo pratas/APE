@@ -11,4 +11,11 @@ chmod +x runPrimates.sh
 ./runPrimates.sh
 </pre>
 
+Dependencies:
+<pre>
+GeCo
+Goose
+</pre>
+Although they are installed and used automatically.
+
 License is GPLv3.

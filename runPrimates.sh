@@ -316,7 +316,7 @@ gnuplot << EOF
   set format '%g'
   set size ratio 0.8
   set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
+  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7);
   set yrange [0:1] 
   set xrange [0.5:7.5] 
   set ytics 0.2

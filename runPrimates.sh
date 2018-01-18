@@ -16,8 +16,10 @@ GET_ANUBIS=1;
 GET_MARMOSET=1;
 #==============================================================================
 GET_MTDNA=1;
+GET_MRNA=1
 #==============================================================================
 RUN_MITO=1;
+RUN_MRNA=1;
 RUN_WGS=1;
 #==============================================================================
 PLOT=1;
@@ -117,6 +119,25 @@ if [[ "$GET_MTDNA" -eq "1" ]]; then
   | ./goose-extractreadbypattern Callithrix_jacchus | ./goose-fasta2seq > MT_CJ.seq
 fi
 #==============================================================================
+# GET MRNA
+if [[ "$GET_MRNA" -eq "1" ]]; then
+  wget -O HS-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Homo_sapiens/RNA/rna.fa.gz
+  wget -O PT-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Pan_troglodytes/RNA/rna.fa.gz
+  wget -O GG-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Gorilla_gorilla/RNA/rna.fa.gz
+  wget -O PA-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Pongo_abelii/RNA/rna.fa.gz
+  wget -O GB-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Nomascus_leucogenys/RNA/rna.fa.gz
+  wget -O AN-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Papio_anubis/RNA/rna.fa.gz
+  wget -O CJ-rna.fa.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/Callithrix_jacchus/RNA/rna.fa.gz
+  #
+  zcat HS-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_HS.seq
+  zcat PT-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_PT.seq
+  zcat GG-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_GG.seq
+  zcat PA-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_PA.seq
+  zcat GB-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_GB.seq
+  zcat AN-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_AN.seq
+  zcat CJ-rna.fa.gz | grep -v ">" | tr -d -c "ACGT" > RNA_CJ.seq
+fi
+#==============================================================================
 ###############################################################################
 #==============================================================================
 if [[ "$RUN_MITO" -eq "1" ]]; then
@@ -143,6 +164,18 @@ fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
+if [[ "$RUN_MRNA" -eq "1" ]]; then
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_HS.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_HS
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_PT.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_PT
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_GG.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_GG
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_PA.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_PA
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_GB.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_GB
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_AN.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_AN
+  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_CJ.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_CJ
+fi
+#==============================================================================
+###############################################################################
+#==============================================================================
 if [[ "$PLOT" -eq "1" ]]; then
   cat REPORT_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES
   cat REPORT_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_HS
@@ -152,6 +185,15 @@ if [[ "$PLOT" -eq "1" ]]; then
   cat REPORT_MITO_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_GB
   cat REPORT_MITO_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_AN
   cat REPORT_MITO_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_CJ
+  #
+  cat REPORT_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES
+  cat REPORT_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_HS
+  cat REPORT_RNA_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_PT
+  cat REPORT_RNA_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_GG
+  cat REPORT_RNA_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_PA
+  cat REPORT_RNA_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_GB
+  cat REPORT_RNA_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_AN
+  cat REPORT_RNA_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_CJ
   #
   cat REPORT_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES
   cat REPORT_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_HS
@@ -182,8 +224,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES"  with linespoints ls 1 title "mtDNA", "RNA_VALUES"  with linespoints ls 2 title "mRNA", "WGS_VALUES" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -206,8 +249,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_HS"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_HS" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_HS"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_HS"  with linespoints ls 2 title "mRNA", "WGS_VALUES_HS" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -230,8 +274,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_PT"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_PT" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_PT"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_PT"  with linespoints ls 2 title "mRNA", "WGS_VALUES_PT" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -254,8 +299,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_GG"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_GG" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_GG"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_GG"  with linespoints ls 2 title "mRNA", "WGS_VALUES_GG" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -278,8 +324,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_PA"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_PA" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_PA"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_PA"  with linespoints ls 2 title "mRNA", "WGS_VALUES_PA" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -302,8 +349,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_GB"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_GB" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_GB"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_GB"  with linespoints ls 2 title "mRNA", "WGS_VALUES_GB" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -326,8 +374,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_AN"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_AN" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_AN"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_AN"  with linespoints ls 2 title "mRNA", "WGS_VALUES_AN" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -350,8 +399,9 @@ gnuplot << EOF
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_CJ"  with linespoints ls 1 title "mitochondrial", "WGS_VALUES_CJ" with linespoints ls 2 title "nuclear"
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  plot "MT_VALUES_CJ"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_CJ"  with linespoints ls 2 title "mRNA", "WGS_VALUES_CJ" with linespoints ls 3 title "ncDNA"
 EOF
 
 fi

@@ -1,4 +1,4 @@
-<b>APE</b> - Accelaration Patterns of Evolution
+<b>APE</b> - Acceleration Patterns of Evolution
 
 Download and installation:
 <pre>

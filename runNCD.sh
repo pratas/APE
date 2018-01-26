@@ -226,32 +226,28 @@ fi
 ###############################################################################
 #==============================================================================
 if [[ "$PLOT" -eq "1" ]]; then
-  cat REPORT_NCD_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES
-  cat REPORT_NCD_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_HS
-  cat REPORT_NCD_MITO_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_PT
-  cat REPORT_NCD_MITO_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_GG
-  cat REPORT_NCD_MITO_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_PA
-  cat REPORT_NCD_MITO_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_GB
-  cat REPORT_NCD_MITO_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_AN
-  cat REPORT_NCD_MITO_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_CJ
+  chmod +x NCDcalc.sh
   #
-  cat REPORT_NCD_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES
-  cat REPORT_NCD_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_HS
-  cat REPORT_NCD_RNA_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_PT
-  cat REPORT_NCD_RNA_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_GG
-  cat REPORT_NCD_RNA_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_PA
-  cat REPORT_NCD_RNA_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_GB
-  cat REPORT_NCD_RNA_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_AN
-  cat REPORT_NCD_RNA_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_CJ
+  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_PT REPORT_NCD_MITO_HS_PT | awk '{printf "%f", $0}'` >  NCD_MT_VALUES;
+  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_GG REPORT_NCD_MITO_HS_GG | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
+  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_PA REPORT_NCD_MITO_HS_PA | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
+  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_GB REPORT_NCD_MITO_HS_GB | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
+  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_AN REPORT_NCD_MITO_HS_AN | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
+  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_CJ REPORT_NCD_MITO_HS_CJ | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
   #
-  cat REPORT_NCD_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES
-  cat REPORT_NCD_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_HS
-  cat REPORT_NCD_WGS_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_PT
-  cat REPORT_NCD_WGS_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_GG
-  cat REPORT_NCD_WGS_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_PA
-  cat REPORT_NCD_WGS_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_GB
-  cat REPORT_NCD_WGS_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_AN
-  cat REPORT_NCD_WGS_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_CJ
+  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_PT REPORT_NCD_RNA_HS_PT | awk '{printf "%f", $0}'` >  NCD_RNA_VALUES;
+  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_GG REPORT_NCD_RNA_HS_GG | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
+  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_PA REPORT_NCD_RNA_HS_PA | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
+  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_GB REPORT_NCD_RNA_HS_GB | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
+  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_AN REPORT_NCD_RNA_HS_AN | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
+  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_CJ REPORT_NCD_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES; 
+  #
+  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_PT REPORT_WGS_RNA_HS_PT | awk '{printf "%f", $0}'` >  NCD_WGS_VALUES;
+  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_GG REPORT_WGS_RNA_HS_GG | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_PA REPORT_WGS_RNA_HS_PA | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_GB REPORT_WGS_RNA_HS_GB | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_AN REPORT_WGS_RNA_HS_AN | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_CJ REPORT_WGS_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
 
 gnuplot << EOF
   reset
@@ -269,188 +265,13 @@ gnuplot << EOF
   set ytics 0.2
   set grid 
   set xtics rotate by -30
-  set ylabel "NRC"
+  set ylabel "NCD"
   set xlabel "Species"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
   plot "NCD_MT_VALUES"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-HS.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_HS"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_HS"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_HS" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-PT.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_PT"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_PT"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_PT" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-GG.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_GG"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_GG"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_GG" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-PA.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_PA"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_PA"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_PA" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-GB.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_GB"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_GB"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_GB" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-AN.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7);
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_AN"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_AN"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_AN" with linespoints ls 3 title "ncDNA"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE-CJ.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set xtics ("Human" 1, "Chimpanzee" 2, "Gorilla" 3, "Orangutan" 4, "Gibbon" 5, "Babbon" 6, "Marmoset" 7)
-  set yrange [0:1] 
-  set xrange [0.5:7.5] 
-  set ytics 0.2
-  set grid 
-  set xtics rotate by -30
-  set ylabel "NRC"
-  set xlabel "Species"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES_CJ"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_CJ"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_CJ" with linespoints ls 3 title "ncDNA"
 EOF
 
 fi

@@ -167,72 +167,91 @@ fi
 ###############################################################################
 #==============================================================================
 if [[ "$RUN_WGS" -eq "1" ]]; then
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS.seq ) &> REPORT_NCD_WGS_HS
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_PT.seq ) &> REPORT_NCD_WGS_PT
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_GG.seq ) &> REPORT_NCD_WGS_GG
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_PA.seq ) &> REPORT_NCD_WGS_PA
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_GB.seq ) &> REPORT_NCD_WGS_GB
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_AN.seq ) &> REPORT_NCD_WGS_AN
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_CJ.seq ) &> REPORT_NCD_WGS_CJ
-  cat MT_HS.seq MT_HS.seq > MT_HS_HS.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_HS.seq ) &> REPORT_NCD_WGS_HS_HS
-  cat MT_HS.seq MT_PT.seq > MT_HS_PT.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_PT.seq ) &> REPORT_NCD_WGS_HS_PT
-  cat MT_HS.seq MT_GG.seq > MT_HS_GG.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_GG.seq ) &> REPORT_NCD_WGS_HS_GG
-  cat MT_HS.seq MT_PA.seq > MT_HS_PA.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_PA.seq ) &> REPORT_NCD_WGS_HS_PA
-  cat MT_HS.seq MT_GB.seq > MT_HS_GB.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_GB.seq ) &> REPORT_NCD_WGS_HS_GB
-  cat MT_HS.seq MT_AN.seq > MT_HS_AN.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_AN.seq ) &> REPORT_NCD_WGS_HS_AN
-  cat MT_HS.seq MT_CJ.seq > MT_HS_CJ.seq
-  (./GeCo -v -tm 13:200:1:5/10 -tm 10:100:1:0/0 -tm 6:1:0:0/0 -tm 3:1:0:0/0 -c 10 -g 0.95 MT_HS_CJ.seq ) &> REPORT_NCD_WGS_HS_CJ
-
-#  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -c 250 -g 0.88 -r HS HS:PT:GG:PA:GB:AN:CJ &> REPORT_WGS_HS
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS ) &> REPORT_NCD_WGS_HS
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 PT ) &> REPORT_NCD_WGS_PT
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 GG ) &> REPORT_NCD_WGS_GG
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 PA ) &> REPORT_NCD_WGS_PA
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 GB ) &> REPORT_NCD_WGS_GB
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 AN ) &> REPORT_NCD_WGS_AN
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 CJ ) &> REPORT_NCD_WGS_CJ
+  cat HS HS > HS_HS
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_HS ) &> REPORT_NCD_WGS_HS_HS
+  cat HS PT > HS_PT
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_PT ) &> REPORT_NCD_WGS_HS_PT
+  cat HS GG > HS_GG
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_GG ) &> REPORT_NCD_WGS_HS_GG
+  cat HS PA > HS_PA
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_PA ) &> REPORT_NCD_WGS_HS_PA
+  cat HS GB > HS_GB
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_GB ) &> REPORT_NCD_WGS_HS_GB
+  cat HS AN > HS_AN
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_AN ) &> REPORT_NCD_WGS_HS_AN
+  cat HS CJ > HS_CJ
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 HS_CJ ) &> REPORT_NCD_WGS_HS_CJ
 fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
 if [[ "$RUN_MRNA" -eq "1" ]]; then
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_HS.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_HS
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_PT.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_PT
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_GG.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_GG
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_PA.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_PA
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_GB.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_GB
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_AN.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_AN
-  ./GeCo -v -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -rm 4:1:0:0/0 -c 200 -g 0.88 -r RNA_CJ.seq RNA_HS.seq:RNA_PT.seq:RNA_GG.seq:RNA_PA.seq:RNA_GB.seq:RNA_AN.seq:RNA_CJ.seq &> REPORT_RNA_CJ
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq ) &> REPORT_NCD_RNA_HS
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_PT.seq ) &> REPORT_NCD_RNA_PT
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_GG.seq ) &> REPORT_NCD_RNA_GG
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_PA.seq ) &> REPORT_NCD_RNA_PA
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_GB.seq ) &> REPORT_NCD_RNA_GB
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_AN.seq ) &> REPORT_NCD_RNA_AN
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_CJ.seq ) &> REPORT_NCD_RNA_CJ
+  #
+  cat RNA_HS.seq RNA_HS.seq > RNA_HS.seq_RNA_HS.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_HS.seq ) &> REPORT_NCD_RNA_HS_HS
+  #
+  cat RNA_HS.seq RNA_PT.seq > RNA_HS.seq_RNA_PT.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_PT.seq ) &> REPORT_NCD_RNA_HS_PT
+  #
+  cat RNA_HS.seq RNA_GG.seq > RNA_HS.seq_RNA_GG.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_GG.seq ) &> REPORT_NCD_RNA_HS_GG
+  #
+  cat RNA_HS.seq RNA_PA.seq > RNA_HS.seq_RNA_PA.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_PA.seq ) &> REPORT_NCD_RNA_HS_PA
+  #
+  cat RNA_HS.seq RNA_GB.seq > RNA_HS.seq_RNA_GB.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_GB.seq ) &> REPORT_NCD_RNA_HS_GB
+  #
+  cat RNA_HS.seq RNA_AN.seq > RNA_HS.seq_RNA_AN.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_AN.seq ) &> REPORT_NCD_RNA_HS_AN
+  #
+  cat RNA_HS.seq RNA_CJ.seq > RNA_HS.seq_RNA_CJ.seq
+  (./GeCo -v -tm 20:200:1:5/10 -tm 14:50:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -tm 4:1:0:0/0 -c 200 -g 0.88 RNA_HS.seq_RNA_CJ.seq ) &> REPORT_NCD_RNA_HS_CJ
 fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
 if [[ "$PLOT" -eq "1" ]]; then
-  cat REPORT_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES
-  cat REPORT_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_HS
-  cat REPORT_MITO_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_PT
-  cat REPORT_MITO_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_GG
-  cat REPORT_MITO_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_PA
-  cat REPORT_MITO_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_GB
-  cat REPORT_MITO_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_AN
-  cat REPORT_MITO_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > MT_VALUES_CJ
+  cat REPORT_NCD_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES
+  cat REPORT_NCD_MITO_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_HS
+  cat REPORT_NCD_MITO_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_PT
+  cat REPORT_NCD_MITO_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_GG
+  cat REPORT_NCD_MITO_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_PA
+  cat REPORT_NCD_MITO_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_GB
+  cat REPORT_NCD_MITO_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_AN
+  cat REPORT_NCD_MITO_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_MT_VALUES_CJ
   #
-  cat REPORT_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES
-  cat REPORT_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_HS
-  cat REPORT_RNA_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_PT
-  cat REPORT_RNA_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_GG
-  cat REPORT_RNA_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_PA
-  cat REPORT_RNA_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_GB
-  cat REPORT_RNA_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_AN
-  cat REPORT_RNA_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > RNA_VALUES_CJ
+  cat REPORT_NCD_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES
+  cat REPORT_NCD_RNA_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_HS
+  cat REPORT_NCD_RNA_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_PT
+  cat REPORT_NCD_RNA_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_GG
+  cat REPORT_NCD_RNA_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_PA
+  cat REPORT_NCD_RNA_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_GB
+  cat REPORT_NCD_RNA_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_AN
+  cat REPORT_NCD_RNA_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_RNA_VALUES_CJ
   #
-  cat REPORT_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES
-  cat REPORT_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_HS
-  cat REPORT_WGS_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_PT
-  cat REPORT_WGS_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_GG
-  cat REPORT_WGS_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_PA
-  cat REPORT_WGS_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_GB
-  cat REPORT_WGS_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_AN
-  cat REPORT_WGS_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > WGS_VALUES_CJ
+  cat REPORT_NCD_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 6 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES
+  cat REPORT_NCD_WGS_HS | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_HS
+  cat REPORT_NCD_WGS_PT | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_PT
+  cat REPORT_NCD_WGS_GG | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_GG
+  cat REPORT_NCD_WGS_PA | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_PA
+  cat REPORT_NCD_WGS_GB | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_GB
+  cat REPORT_NCD_WGS_AN | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_AN
+  cat REPORT_NCD_WGS_CJ | grep "compressed bytes" | awk '{ print $12;}' | tail -n 7 | awk '{printf("%d\t%s\n", NR, $0)}' > NCD_WGS_VALUES_CJ
 
 gnuplot << EOF
   reset
@@ -256,7 +275,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES"  with linespoints ls 1 title "mtDNA", "RNA_VALUES"  with linespoints ls 2 title "mRNA", "WGS_VALUES" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -281,7 +300,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_HS"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_HS"  with linespoints ls 2 title "mRNA", "WGS_VALUES_HS" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_HS"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_HS"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_HS" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -306,7 +325,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_PT"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_PT"  with linespoints ls 2 title "mRNA", "WGS_VALUES_PT" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_PT"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_PT"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_PT" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -331,7 +350,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_GG"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_GG"  with linespoints ls 2 title "mRNA", "WGS_VALUES_GG" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_GG"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_GG"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_GG" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -356,7 +375,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_PA"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_PA"  with linespoints ls 2 title "mRNA", "WGS_VALUES_PA" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_PA"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_PA"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_PA" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -381,7 +400,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_GB"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_GB"  with linespoints ls 2 title "mRNA", "WGS_VALUES_GB" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_GB"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_GB"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_GB" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -406,7 +425,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_AN"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_AN"  with linespoints ls 2 title "mRNA", "WGS_VALUES_AN" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_AN"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_AN"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_AN" with linespoints ls 3 title "ncDNA"
 EOF
 
 gnuplot << EOF
@@ -431,7 +450,7 @@ gnuplot << EOF
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "MT_VALUES_CJ"  with linespoints ls 1 title "mtDNA", "RNA_VALUES_CJ"  with linespoints ls 2 title "mRNA", "WGS_VALUES_CJ" with linespoints ls 3 title "ncDNA"
+  plot "NCD_MT_VALUES_CJ"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES_CJ"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES_CJ" with linespoints ls 3 title "ncDNA"
 EOF
 
 fi

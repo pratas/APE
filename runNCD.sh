@@ -16,7 +16,7 @@ GET_ANUBIS=1;
 GET_MARMOSET=1;
 #==============================================================================
 GET_MTDNA=1;
-GET_MRNA=1
+GET_MRNA=1;
 #==============================================================================
 RUN_MITO=1;
 RUN_MRNA=1;
@@ -240,24 +240,24 @@ if [[ "$PLOT" -eq "1" ]]; then
   printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_PA REPORT_NCD_RNA_HS_PA | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
   printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_GB REPORT_NCD_RNA_HS_GB | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
   printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_AN REPORT_NCD_RNA_HS_AN | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
-  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_CJ REPORT_NCD_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES; 
+  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_CJ REPORT_NCD_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
   #
-  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_PT REPORT_WGS_RNA_HS_PT | awk '{printf "%f", $0}'` >  NCD_WGS_VALUES;
-  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_GG REPORT_WGS_RNA_HS_GG | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_PA REPORT_WGS_RNA_HS_PA | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_GB REPORT_WGS_RNA_HS_GB | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_AN REPORT_WGS_RNA_HS_AN | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_CJ REPORT_WGS_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_NCD_WGS_PT REPORT_NCD_WGS_HS_PT | awk '{printf "%f", $0}'` >  NCD_WGS_VALUES;
+  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_NCD_WGS_GG REPORT_NCD_WGS_HS_GG | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_NCD_WGS_PA REPORT_NCD_WGS_HS_PA | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_NCD_WGS_GB REPORT_NCD_WGS_HS_GB | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_NCD_WGS_AN REPORT_NCD_WGS_HS_AN | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_NCD_WGS_CJ REPORT_NCD_WGS_HS_CJ | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
 
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE.pdf"
+  set output "APE_NCD.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75
   set format '%g'
-  set size ratio 0.8
+  set size ratio 0.5
   set key outside horiz center top
   set xtics ("Chimpanzee" 1, "Gorilla" 2, "Orangutan" 3, "Gibbon" 4, "Babbon" 5, "Marmoset" 6)
   set yrange [0:1] 

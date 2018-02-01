@@ -896,7 +896,7 @@ if [[ "$PLOT" -eq "1" ]]; then
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NCDvsNRC.pdf"
+  set output "NCDl.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75
@@ -904,10 +904,9 @@ gnuplot << EOF
   set size ratio 0.8
   set key outside horiz center top
   set yrange [0:1.2] 
-  set xrange [0:50] 
+  set xrange [0:40] 
   set ytics 0.2
   set grid 
-  set xtics rotate by -30
   set ylabel "NCD"
   set xlabel "Substitutions (%)"
   set border linewidth 1.5
@@ -915,11 +914,37 @@ gnuplot << EOF
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
   set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
-  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 9 ps 0.5 # --- ?
+  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
   set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
   set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
+  plot "NCD_1-9-VALUES"  with linespoints ls 1 title "NCD 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NCD 2-8", "NCD_3-7-VALUES"  with linespoints ls 3 title "NCD 3-7", "NCD_4-6-VALUES"  with linespoints ls 4 title "NCD 4-6", "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5"
+EOF
 
-  plot "NCD_1-9-VALUES"  with linespoints ls 1 title "NCD 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NCD 2-8", "NCD_3-7-VALUES"  with linespoints ls 3 title "NCD 3-7", "NCD_6-4-VALUES"  with linespoints ls 4 title "NCD 6-4", "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5"
+gnuplot << EOF
+  reset
+  set terminal pdfcairo enhanced color font 'Verdana,12'
+  set output "NCDr.pdf"
+  set style line 101 lc rgb '#000000' lt 1 lw 4
+  set border 3 front ls 101
+  set tics nomirror out scale 0.75
+  set format '%g'
+  set size ratio 0.8
+  set key outside horiz center top
+  set yrange [0:1.2] 
+  set xrange [0:40] 
+  set ytics 0.2
+  set grid 
+  set ylabel "NCD"
+  set xlabel "Substitutions (%)"
+  set border linewidth 1.5
+  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
+  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
+  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
+  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
+  plot "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5", "NCD_6-4-VALUES"  with linespoints ls 4 title "NCD 6-4", "NCD_7-3-VALUES"  with linespoints ls 3 title "NCD 7-3", "NCD_8-2-VALUES"  with linespoints ls 2 title "NCD 8-2", "NCD_9-1-VALUES"  with linespoints ls 1 title "NCD 9-1"
 EOF
 
 fi

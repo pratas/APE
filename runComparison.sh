@@ -792,55 +792,128 @@ fi
 if [[ "$PLOT" -eq "1" ]]; then
   chmod +x NCDcalc.sh
   #
-  (./GeCo $NCD_X SAMPLE_900000_0) &> REPORT_NCD_900k_0
-  (./GeCo $NCD_X SAMPLE_100000_0) &> REPORT_NCD_100k_0
-  cat SAMPLE_900000_0 SAMPLE_100000_0 > CAT_XY;
-  (./GeCo $NCD_XY CAT_XY) &> REPORT_NCD_900k_0_100k_0
-
-  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_0 REPORT_NCD_900k_0_100k_0 | awk '{printf "%f", $0}'` >  NCD_9-1-VALUES;
-  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_GG REPORT_NCD_MITO_HS_GG | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
-  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_PA REPORT_NCD_MITO_HS_PA | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
-  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_GB REPORT_NCD_MITO_HS_GB | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
-  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_AN REPORT_NCD_MITO_HS_AN | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
-  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_MITO_HS REPORT_NCD_MITO_CJ REPORT_NCD_MITO_HS_CJ | awk '{printf "%f", $0}'` >> NCD_MT_VALUES;
-  #
-  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_PT REPORT_NCD_RNA_HS_PT | awk '{printf "%f", $0}'` >  NCD_RNA_VALUES;
-  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_GG REPORT_NCD_RNA_HS_GG | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
-  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_PA REPORT_NCD_RNA_HS_PA | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
-  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_GB REPORT_NCD_RNA_HS_GB | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
-  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_AN REPORT_NCD_RNA_HS_AN | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES;
-  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_RNA_HS REPORT_NCD_RNA_CJ REPORT_NCD_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_RNA_VALUES; 
-  #
-  printf "1\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_PT REPORT_WGS_RNA_HS_PT | awk '{printf "%f", $0}'` >  NCD_WGS_VALUES;
-  printf "2\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_GG REPORT_WGS_RNA_HS_GG | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "3\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_PA REPORT_WGS_RNA_HS_PA | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "4\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_GB REPORT_WGS_RNA_HS_GB | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "5\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_AN REPORT_WGS_RNA_HS_AN | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
-  printf "6\t%s\n" `./NCDcalc.sh REPORT_NCD_WGS_HS REPORT_WGS_RNA_CJ REPORT_WGS_RNA_HS_CJ | awk '{printf "%f", $0}'` >> NCD_WGS_VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_0 REPORT_NCD_900k_0_100k_0 | awk '{printf "%f", $0}'` >  NCD_9-1-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_5 REPORT_NCD_900k_0_100k_5 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_10 REPORT_NCD_900k_0_100k_10 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_15 REPORT_NCD_900k_0_100k_15 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_20 REPORT_NCD_900k_0_100k_20 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_25 REPORT_NCD_900k_0_100k_25 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_30 REPORT_NCD_900k_0_100k_30 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_35 REPORT_NCD_900k_0_100k_35 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_40 REPORT_NCD_900k_0_100k_40 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_45 REPORT_NCD_900k_0_100k_45 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_50 REPORT_NCD_900k_0_100k_50 | awk '{printf "%f", $0}'` >>  NCD_9-1-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_0 REPORT_NCD_800k_0_200k_0 | awk '{printf "%f", $0}'` >  NCD_8-2-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_5 REPORT_NCD_800k_0_200k_5 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_10 REPORT_NCD_800k_0_200k_10 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_15 REPORT_NCD_800k_0_200k_15 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_20 REPORT_NCD_800k_0_200k_20 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_25 REPORT_NCD_800k_0_200k_25 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_30 REPORT_NCD_800k_0_200k_30 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_35 REPORT_NCD_800k_0_200k_35 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_40 REPORT_NCD_800k_0_200k_40 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_45 REPORT_NCD_800k_0_200k_45 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_800k_0 REPORT_NCD_200k_50 REPORT_NCD_800k_0_200k_50 | awk '{printf "%f", $0}'` >>  NCD_8-2-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_0 REPORT_NCD_700k_0_300k_0 | awk '{printf "%f", $0}'` >  NCD_7-3-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_5 REPORT_NCD_700k_0_300k_5 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_10 REPORT_NCD_700k_0_300k_10 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_15 REPORT_NCD_700k_0_300k_15 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_20 REPORT_NCD_700k_0_300k_20 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_25 REPORT_NCD_700k_0_300k_25 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_30 REPORT_NCD_700k_0_300k_30 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_35 REPORT_NCD_700k_0_300k_35 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_40 REPORT_NCD_700k_0_300k_40 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_45 REPORT_NCD_700k_0_300k_45 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_700k_0 REPORT_NCD_300k_50 REPORT_NCD_700k_0_300k_50 | awk '{printf "%f", $0}'` >>  NCD_7-3-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_0 REPORT_NCD_600k_0_400k_0 | awk '{printf "%f", $0}'` >  NCD_6-4-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_5 REPORT_NCD_600k_0_400k_5 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_10 REPORT_NCD_600k_0_400k_10 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_15 REPORT_NCD_600k_0_400k_15 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_20 REPORT_NCD_600k_0_400k_20 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_25 REPORT_NCD_600k_0_400k_25 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_30 REPORT_NCD_600k_0_400k_30 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_35 REPORT_NCD_600k_0_400k_35 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_40 REPORT_NCD_600k_0_400k_40 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_45 REPORT_NCD_600k_0_400k_45 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_600k_0 REPORT_NCD_400k_50 REPORT_NCD_600k_0_400k_50 | awk '{printf "%f", $0}'` >>  NCD_6-4-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_0 REPORT_NCD_500k_0_500k_0 | awk '{printf "%f", $0}'` >  NCD_5-5-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_5 REPORT_NCD_500k_0_500k_5 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_10 REPORT_NCD_500k_0_500k_10 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_15 REPORT_NCD_500k_0_500k_15 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_20 REPORT_NCD_500k_0_500k_20 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_25 REPORT_NCD_500k_0_500k_25 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_30 REPORT_NCD_500k_0_500k_30 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_35 REPORT_NCD_500k_0_500k_35 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_40 REPORT_NCD_500k_0_500k_40 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_45 REPORT_NCD_500k_0_500k_45 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_500k_0 REPORT_NCD_500k_50 REPORT_NCD_500k_0_500k_50 | awk '{printf "%f", $0}'` >>  NCD_5-5-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_0 REPORT_NCD_400k_0_600k_0 | awk '{printf "%f", $0}'` >  NCD_4-6-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_5 REPORT_NCD_400k_0_600k_5 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_10 REPORT_NCD_400k_0_600k_10 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_15 REPORT_NCD_400k_0_600k_15 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_20 REPORT_NCD_400k_0_600k_20 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_25 REPORT_NCD_400k_0_600k_25 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_30 REPORT_NCD_400k_0_600k_30 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_35 REPORT_NCD_400k_0_600k_35 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_40 REPORT_NCD_400k_0_600k_40 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_45 REPORT_NCD_400k_0_600k_45 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_400k_0 REPORT_NCD_600k_50 REPORT_NCD_400k_0_600k_50 | awk '{printf "%f", $0}'` >>  NCD_4-6-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_0 REPORT_NCD_300k_0_700k_0 | awk '{printf "%f", $0}'` >  NCD_3-7-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_5 REPORT_NCD_300k_0_700k_5 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_10 REPORT_NCD_300k_0_700k_10 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_15 REPORT_NCD_300k_0_700k_15 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_20 REPORT_NCD_300k_0_700k_20 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_25 REPORT_NCD_300k_0_700k_25 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_30 REPORT_NCD_300k_0_700k_30 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_35 REPORT_NCD_300k_0_700k_35 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_40 REPORT_NCD_300k_0_700k_40 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_45 REPORT_NCD_300k_0_700k_45 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_300k_0 REPORT_NCD_700k_50 REPORT_NCD_300k_0_700k_50 | awk '{printf "%f", $0}'` >>  NCD_3-7-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_0 REPORT_NCD_200k_0_800k_0 | awk '{printf "%f", $0}'` >  NCD_2-8-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_5 REPORT_NCD_200k_0_800k_5 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_10 REPORT_NCD_200k_0_800k_10 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_15 REPORT_NCD_200k_0_800k_15 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_20 REPORT_NCD_200k_0_800k_20 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_25 REPORT_NCD_200k_0_800k_25 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_30 REPORT_NCD_200k_0_800k_30 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_35 REPORT_NCD_200k_0_800k_35 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_40 REPORT_NCD_200k_0_800k_40 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_45 REPORT_NCD_200k_0_800k_45 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_200k_0 REPORT_NCD_800k_50 REPORT_NCD_200k_0_800k_50 | awk '{printf "%f", $0}'` >>  NCD_2-8-VALUES;
+  printf "1\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_0 REPORT_NCD_100k_0_900k_0 | awk '{printf "%f", $0}'` >  NCD_1-9-VALUES;
+  printf "5\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_5 REPORT_NCD_100k_0_900k_5 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "10\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_10 REPORT_NCD_100k_0_900k_10 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "15\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_15 REPORT_NCD_100k_0_900k_15 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "20\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_20 REPORT_NCD_100k_0_900k_20 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "25\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_25 REPORT_NCD_100k_0_900k_25 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "30\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_30 REPORT_NCD_100k_0_900k_30 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "35\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_35 REPORT_NCD_100k_0_900k_35 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "40\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_40 REPORT_NCD_100k_0_900k_40 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "45\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_45 REPORT_NCD_100k_0_900k_45 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  printf "50\t\%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_50 REPORT_NCD_100k_0_900k_50 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
 
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE.pdf"
+  set output "NCDvsNRC.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75
   set format '%g'
   set size ratio 0.8
   set key outside horiz center top
-  set xtics ("Chimpanzee" 1, "Gorilla" 2, "Orangutan" 3, "Gibbon" 4, "Babbon" 5, "Marmoset" 6)
-  set yrange [0:1] 
-  set xrange [0.5:6.5] 
+  set yrange [0:1.2] 
+  set xrange [0:50] 
   set ytics 0.2
   set grid 
   set xtics rotate by -30
   set ylabel "NCD"
-  set xlabel "Species"
+  set xlabel "Substitutions"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_MT_VALUES"  with linespoints ls 1 title "mtDNA", "NCD_RNA_VALUES"  with linespoints ls 2 title "mRNA", "NCD_WGS_VALUES" with linespoints ls 3 title "ncDNA"
+  plot "NCD_1-9-VALUES"  with linespoints ls 1 title "NCD 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NCD 2-8"
 EOF
 
 fi

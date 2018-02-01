@@ -891,7 +891,110 @@ if [[ "$PLOT" -eq "1" ]]; then
   printf "40\t%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_40 REPORT_NCD_100k_0_900k_40 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
   printf "45\t%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_45 REPORT_NCD_100k_0_900k_45 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
   printf "50\t%s\n" `./NCDcalc.sh REPORT_NCD_100k_0 REPORT_NCD_900k_50 REPORT_NCD_100k_0_900k_50 | awk '{printf "%f", $0}'` >>  NCD_1-9-VALUES;
+  # NRC
+  cat REPORT_100k_0_900k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_100k_0_900k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_1-9_VALUES;
+  cat REPORT_200k_0_800k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_200k_0_800k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_2-8_VALUES;
+  cat REPORT_300k_0_700k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_300k_0_700k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_3-7_VALUES;
+  cat REPORT_400k_0_600k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_400k_0_600k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_4-6_VALUES;
+  cat REPORT_500k_0_500k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_500k_0_500k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_5-5_VALUES;
+  cat REPORT_600k_0_400k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_600k_0_400k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_6-4_VALUES;
+  cat REPORT_700k_0_300k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_700k_0_300k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_7-3_VALUES;
+  cat REPORT_800k_0_200k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_800k_0_200k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_8-2_VALUES;
+  cat REPORT_900k_0_100k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_5 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 5, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_10 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 10, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_15 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 15, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_20 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 20, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_25 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 25, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_30 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 30, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_35 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 35, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_40 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 40, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_45 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 45, $0}' >> NRC_9-1_VALUES;
+  cat REPORT_900k_0_100k_50 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 50, $0}' >> NRC_9-1_VALUES;
+  #
+  # PLOTS
 
+#NCD
 
 gnuplot << EOF
   reset
@@ -908,7 +1011,7 @@ gnuplot << EOF
   set ytics 0.2
   set grid 
   set ylabel "NCD"
-  set xlabel "Substitutions (%)"
+  set xlabel "Substitutions in y (%)"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
@@ -935,7 +1038,7 @@ gnuplot << EOF
   set ytics 0.2
   set grid 
   set ylabel "NCD"
-  set xlabel "Substitutions (%)"
+  set xlabel "Substitutions in y (%)"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
@@ -946,5 +1049,62 @@ gnuplot << EOF
   set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
   plot "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5", "NCD_6-4-VALUES"  with linespoints ls 4 title "NCD 6-4", "NCD_7-3-VALUES"  with linespoints ls 3 title "NCD 7-3", "NCD_8-2-VALUES"  with linespoints ls 2 title "NCD 8-2", "NCD_9-1-VALUES"  with linespoints ls 1 title "NCD 9-1"
 EOF
+
+#NRC
+
+gnuplot << EOF
+  reset
+  set terminal pdfcairo enhanced color font 'Verdana,12'
+  set output "NRCl.pdf"
+  set style line 101 lc rgb '#000000' lt 1 lw 4
+  set border 3 front ls 101
+  set tics nomirror out scale 0.75
+  set format '%g'
+  set size ratio 0.8
+  set key outside horiz center top
+  set yrange [0:1.2] 
+  set xrange [0:40] 
+  set ytics 0.2
+  set grid 
+  set ylabel "NRC"
+  set xlabel "Substitutions in y (%)"
+  set border linewidth 1.5
+  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
+  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
+  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
+  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
+  plot "NRC_1-9-VALUES"  with linespoints ls 1 title "NRC 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NRC 2-8", "NRC_3-7-VALUES"  with linespoints ls 3 title "NRC 3-7", "NRC_4-6-VALUES"  with linespoints ls 4 title "NRC 4-6", "NRC_5-5-VALUES"  with linespoints ls 5 title "NRC 5-5"
+EOF
+
+gnuplot << EOF
+  reset
+  set terminal pdfcairo enhanced color font 'Verdana,12'
+  set output "NRCr.pdf"
+  set style line 101 lc rgb '#000000' lt 1 lw 4
+  set border 3 front ls 101
+  set tics nomirror out scale 0.75
+  set format '%g'
+  set size ratio 0.8
+  set key outside horiz center top
+  set yrange [0:1.2] 
+  set xrange [0:40] 
+  set ytics 0.2
+  set grid 
+  set ylabel "NRC"
+  set xlabel "Substitutions in y (%)"
+  set border linewidth 1.5
+  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
+  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
+  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
+  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
+  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
+  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
+  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
+  plot "NRC_5-5-VALUES"  with linespoints ls 5 title "NRC 5-5", "NRC_6-4-VALUES"  with linespoints ls 4 title "NRC 6-4", "NRC_7-3-VALUES"  with linespoints ls 3 title "NRC 7-3", "NRC_8-2-VALUES"  with linespoints ls 2 title "NRC 8-2", "NRC_9-1-VALUES"  with linespoints ls 1 title "NRC 9-1"
+EOF
+
 
 fi

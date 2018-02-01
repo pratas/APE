@@ -1076,7 +1076,7 @@ gnuplot << EOF
   set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
   set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
   set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
-  plot "NRC_1-9-VALUES"  with linespoints ls 1 title "NRC 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NRC 2-8", "NRC_3-7-VALUES"  with linespoints ls 3 title "NRC 3-7", "NRC_4-6-VALUES"  with linespoints ls 4 title "NRC 4-6", "NRC_5-5-VALUES"  with linespoints ls 5 title "NRC 5-5"
+  plot "NRC_1-9_VALUES"  with linespoints ls 1 title "NRC 1-9", "NCD_2-8_VALUES"  with linespoints ls 2 title "NRC 2-8", "NRC_3-7_VALUES"  with linespoints ls 3 title "NRC 3-7", "NRC_4-6_VALUES"  with linespoints ls 4 title "NRC 4-6", "NRC_5-5_VALUES"  with linespoints ls 5 title "NRC 5-5"
 EOF
 
 gnuplot << EOF
@@ -1103,7 +1103,7 @@ gnuplot << EOF
   set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
   set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
   set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
-  plot "NRC_5-5-VALUES"  with linespoints ls 5 title "NRC 5-5", "NRC_6-4-VALUES"  with linespoints ls 4 title "NRC 6-4", "NRC_7-3-VALUES"  with linespoints ls 3 title "NRC 7-3", "NRC_8-2-VALUES"  with linespoints ls 2 title "NRC 8-2", "NRC_9-1-VALUES"  with linespoints ls 1 title "NRC 9-1"
+  plot "NRC_5-5_VALUES"  with linespoints ls 5 title "NRC 5-5", "NRC_6-4_VALUES"  with linespoints ls 4 title "NRC 6-4", "NRC_7-3_VALUES"  with linespoints ls 3 title "NRC 7-3", "NRC_8-2_VALUES"  with linespoints ls 2 title "NRC 8-2", "NRC_9-1_VALUES"  with linespoints ls 1 title "NRC 9-1"
 EOF
 
 

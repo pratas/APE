@@ -7,8 +7,8 @@ NRC_PARAM=" -v -rm 17:500:0:5/50 -rm 14:200:0:3/10 -rm 11:100:0:0/0 -rm 8:10:0:0
 NCD_X=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
 NCD_XY=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
 #==============================================================================
-GET_GOOSE=1;
-GET_GECO=1;
+GET_GOOSE=0;
+GET_GECO=0;
 #==============================================================================
 SIMULATE=0;
 #==============================================================================
@@ -16,7 +16,7 @@ MUTATE=0;
 #==============================================================================
 RUN=0;
 #==============================================================================
-PLOT=0;
+PLOT=1;
 #==============================================================================
 ###############################################################################
 #==============================================================================
@@ -909,12 +909,17 @@ gnuplot << EOF
   set grid 
   set xtics rotate by -30
   set ylabel "NCD"
-  set xlabel "Substitutions"
+  set xlabel "Substitutions (%)"
   set border linewidth 1.5
   set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
   set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
   set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  plot "NCD_1-9-VALUES"  with linespoints ls 1 title "NCD 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NCD 2-8"
+  set style line 4 lc rgb '#4df81f' lt 1 lw 4 pt 7 ps 0.5 # --- ?
+  set style line 5 lc rgb '#3df81f' lt 1 lw 4 pt 7 ps 0.5 # --- ?
+  set style line 6 lc rgb '#2df81f' lt 1 lw 4 pt 7 ps 0.5 # --- ?
+  set style line 7 lc rgb '#1df81f' lt 1 lw 4 pt 7 ps 0.5 # --- ?
+
+  plot "NCD_1-9-VALUES"  with linespoints ls 1 title "NCD 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NCD 2-8", "NCD_3-7-VALUES"  with linespoints ls 3 title "NCD 3-7", "NCD_6-4-VALUES"  with linespoints ls 4 title "NCD 6-4", "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5"
 EOF
 
 fi

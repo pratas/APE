@@ -7,14 +7,14 @@ NRC_PARAM=" -v -rm 17:500:0:5/50 -rm 14:200:0:3/10 -rm 11:100:0:0/0 -rm 8:10:0:0
 NCD_X=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
 NCD_XY=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
 #==============================================================================
-GET_GOOSE=0;
-GET_GECO=0;
+GET_GOOSE=1;
+GET_GECO=1;
 #==============================================================================
-SIMULATE=0;
+SIMULATE=1;
 #==============================================================================
-MUTATE=0;
+MUTATE=1;
 #==============================================================================
-RUN=0;
+RUN=1;
 #==============================================================================
 PLOT=1;
 #==============================================================================
@@ -45,7 +45,9 @@ fi
 ###############################################################################
 #==============================================================================
 if [[ "$SIMULATE" -eq "1" ]]; then
-  ./goose-genrandomdna -s 1 -n 1000000 > SAMPLE;  
+  ./goose-fastqsimulation -v -ls 100 -n 10000 -eh -eo -es -edb -f 0.3,0.2,0.2,0.3,0.0 -rn 1000 -ri 50 -ra 3000 -rm 0.05 SAMPLE
+  # ./GeCo -v -tm 4:1:0:0/0 -tm 11:10:0:0/0 -tm 13:50:1:0/0 -tm 18:200:1:5/10 -c 20 File
+  # Total bytes: 163563 (159.7 KB), 1.32 bpb, 1.319 bps w/ no header, Normalized Dissimilarity Rate: 0.659799
   ./goose-extract -s 1 -l 900000 < SAMPLE > SAMPLE_900000; 
   ./goose-extract -s 1 -l 800000 < SAMPLE > SAMPLE_800000; 
   ./goose-extract -s 1 -l 700000 < SAMPLE > SAMPLE_700000; 
@@ -999,7 +1001,7 @@ if [[ "$PLOT" -eq "1" ]]; then
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NCDl.pdf"
+  set output "NR_NCDl.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75
@@ -1026,7 +1028,7 @@ EOF
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NCDr.pdf"
+  set output "NR_NCDr.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75
@@ -1055,7 +1057,7 @@ EOF
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NRCl.pdf"
+  set output "NR_NRCl.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75
@@ -1082,7 +1084,7 @@ EOF
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NRCr.pdf"
+  set output "NR_NRCr.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75

@@ -205,7 +205,7 @@ if [[ "$PLOT" -eq "1" ]]; then
 gnuplot << EOF
   reset
   set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "APE_NCD.pdf"
+  set output "APE_NC.pdf"
   set style line 101 lc rgb '#000000' lt 1 lw 4
   set border 3 front ls 101
   set tics nomirror out scale 0.75

@@ -92,8 +92,8 @@ fi
 ###############################################################################
 #==============================================================================
 if [[ "$RUN" -eq "1" ]]; then
-  ./GeCo $NRC_PARAM -r HS_MT_0 HS_MT_2:HS_MT_4:HS_MT_6:HS_MT_8:HS_MT_10:HS_MT_12 &> REPORT_MT_SYN
-  ./GeCo $NRC_PARAM -r HS_WGS_0 HS_WGS_1:HS_WGS_2:HS_WGS_3:HS_WGS_4:HS_WGS_5:HS_WGS_6 &> REPORT_WGS_SYN
+  ./GeCo $NRC_PARAM_MT -r HS_MT_0 HS_MT_2:HS_MT_4:HS_MT_6:HS_MT_8:HS_MT_10:HS_MT_12 &> REPORT_MT_SYN
+  ./GeCo $NRC_PARAM_WGS -r HS_WGS_0 HS_WGS_1:HS_WGS_2:HS_WGS_3:HS_WGS_4:HS_WGS_5:HS_WGS_6 &> REPORT_WGS_SYN
 fi
 #==============================================================================
 ###############################################################################

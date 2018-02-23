@@ -3,9 +3,8 @@
 #
 # WARNING: YOU NEED APPROX. 100 GB OF FREE DISK
 #
-NRC_PARAM=" -v -rm 17:500:0:5/50 -rm 14:200:0:3/10 -rm 11:100:0:0/0 -rm 8:10:0:0/0 -rm 5:1:0:0/0 -g 0.95 -c 30 ";
-NCD_X=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
-NCD_XY=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
+RELATIVE_PARAM=" -v -rm 17:500:0:5/50 -rm 14:200:0:3/10 -rm 11:100:0:0/0 -rm 8:10:0:0/0 -rm 5:1:0:0/0 -g 0.95 -c 30 ";
+CONJOINT_PARAM=" -v -tm 17:200:0:5/10 -tm 14:100:0:3/1 -tm 11:10:0:0/0 -tm 8:1:0:0/0 -tm 5:1:0:0/0 -tm 3:1:0:0/0 -g 0.95 -c 30 ";
 #==============================================================================
 GET_GOOSE=0;
 GET_GECO=0;
@@ -77,35 +76,23 @@ if [[ "$SIMULATE" -eq "1" ]]; then
   #
   cat R_A R_B R_C R_D R_E R_F > REFERENCE;
   cat T_A T_B T_C T_D T_E T_F T_G T_H > TARGET;
+  cat REFERENCE TARGET > REFERENCE_TARGET;
   #
 fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
 if [[ "$RUN" -eq "1" ]]; then
-  # NRC
-  (./GeCo $NRC_PARAM -e -r REFERENCE TARGET) &> REPORT_REFERENCE_TARGET_RELATIVE
-  # NCD
-  #9-1 -------------------------------------------
-  #0
-  (./GeCo $NCD_X SAMPLE_900000_0) &> REPORT_NCD_900k_0
-  (./GeCo $NCD_X SAMPLE_100000_0) &> REPORT_NCD_100k_0
-  cat SAMPLE_900000_0 SAMPLE_100000_0 > CAT_XY;
-  (./GeCo $NCD_XY CAT_XY) &> REPORT_NCD_900k_0_100k_0
+  # RELATIVE
+  (./GeCo $RELATIVE_PARAM -e -r REFERENCE TARGET) &> REPORT_REFERENCE_TARGET_RELATIVE
+  # CONJOINT
+  (./GeCo $CONJOINT_PARAM -e REFERENCE_TARGET ) &> REPORT_REFERENCE_TARGET_CONJOINT
 fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
 if [[ "$PLOT" -eq "1" ]]; then
-  chmod +x NCDcalc.sh
-  #
-  printf "0\t%s\n" `./NCDcalc.sh REPORT_NCD_900k_0 REPORT_NCD_100k_0 REPORT_NCD_900k_0_100k_0 | awk '{printf "%f", $0}'` >  NCD_9-1-VALUES;
-  # NRC
-  cat REPORT_100k_0_900k_0 | grep "Total bytes" | awk '{ print $16;}' | awk '{printf "%d\t%s\n", 0, $0}' > NRC_1-9_VALUES;
-  #
-  # PLOTS
-
-#NCD
+  
 
 gnuplot << EOF
   reset

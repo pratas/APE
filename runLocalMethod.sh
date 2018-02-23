@@ -11,7 +11,9 @@ GET_GECO=0;
 #==============================================================================
 SIMULATE=1;
 #==============================================================================
-RUN=1;
+COMPRESS=1;
+#==============================================================================
+FILTER=1;
 #==============================================================================
 PLOT=1;
 #==============================================================================
@@ -82,7 +84,7 @@ fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
-if [[ "$RUN" -eq "1" ]]; then
+if [[ "$COMPRESS" -eq "1" ]]; then
   # RELATIVE
   (./GeCo $RELATIVE_PARAM -e -r REFERENCE TARGET) &> REPORT_REFERENCE_TARGET_RELATIVE
   # CONJOINT
@@ -91,118 +93,51 @@ fi
 #==============================================================================
 ###############################################################################
 #==============================================================================
+if [[ "$FILTER" -eq "1" ]]; then
+  ./goose-filter -w 10001 -d 200 -wt 2 -1 -p1 < TARGET.iae > TARGET.fil
+  ./goose-filter -w 10001 -d 200 -wt 2 -1 -p1 < REFERENCE_TARGET.iae > REFERENCE_TARGET.fil
+fi
+#==============================================================================
+###############################################################################
+#==============================================================================
 if [[ "$PLOT" -eq "1" ]]; then
   
-
 gnuplot << EOF
   reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NCDl.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set yrange [0:1.2] 
-  set xrange [0:40] 
-  set ytics 0.2
-  set grid 
-  set ylabel "NCD"
-  set xlabel "Substitutions in y (%)"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
-  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
-  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
-  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
-  plot "NCD_1-9-VALUES"  with linespoints ls 1 title "NCD 1-9", "NCD_2-8-VALUES"  with linespoints ls 2 title "NCD 2-8", "NCD_3-7-VALUES"  with linespoints ls 3 title "NCD 3-7", "NCD_4-6-VALUES"  with linespoints ls 4 title "NCD 4-6", "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5"
+  set terminal pdfcairo enhanced color
+  set output "RelativeProf.pdf"
+  set auto
+  set size ratio 0.05
+  unset key
+  set yrange [0:2] 
+  set ytics 1
+  unset grid 
+  set ylabel "BPS"
+  set xlabel "Length"
+  unset border
+  unset xtics
+  unset ytics
+  set style line 1 lt 1 lc rgb '#dd181f' lw 1
+  plot "TARGET.fil" u 1:2 w l lt rgb "#292929" title "normal"
 EOF
 
 gnuplot << EOF
   reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NCDr.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set yrange [0:1.2] 
-  set xrange [0:40] 
-  set ytics 0.2
-  set grid 
-  set ylabel "NCD"
-  set xlabel "Substitutions in y (%)"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
-  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
-  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
-  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
-  plot "NCD_5-5-VALUES"  with linespoints ls 5 title "NCD 5-5", "NCD_6-4-VALUES"  with linespoints ls 4 title "NCD 6-4", "NCD_7-3-VALUES"  with linespoints ls 3 title "NCD 7-3", "NCD_8-2-VALUES"  with linespoints ls 2 title "NCD 8-2", "NCD_9-1-VALUES"  with linespoints ls 1 title "NCD 9-1"
+  set terminal pdfcairo enhanced color
+  set output "ConjointProf.pdf"
+  set auto
+  set size ratio 0.05
+  unset key
+  set yrange [0:2] 
+  set ytics 1
+  unset grid 
+  set ylabel "BPS"
+  set xlabel "Length"
+  unset border
+  unset xtics
+  unset ytics
+  set style line 1 lt 1 lc rgb '#dd181f' lw 1
+  plot "REFERENCE_TARGET.fil" u 1:2 w l lt rgb "#292929" title "normal"
 EOF
-
-#NRC
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NRCl.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set yrange [0:1.2] 
-  set xrange [0:40] 
-  set ytics 0.2
-  set grid 
-  set ylabel "NRC"
-  set xlabel "Substitutions in y (%)"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
-  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
-  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
-  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
-  plot "NRC_1-9_VALUES"  with linespoints ls 1 title "NRC 1-9", "NRC_2-8_VALUES"  with linespoints ls 2 title "NRC 2-8", "NRC_3-7_VALUES"  with linespoints ls 3 title "NRC 3-7", "NRC_4-6_VALUES"  with linespoints ls 4 title "NRC 4-6", "NRC_5-5_VALUES"  with linespoints ls 5 title "NRC 5-5"
-EOF
-
-gnuplot << EOF
-  reset
-  set terminal pdfcairo enhanced color font 'Verdana,12'
-  set output "NRCr.pdf"
-  set style line 101 lc rgb '#000000' lt 1 lw 4
-  set border 3 front ls 101
-  set tics nomirror out scale 0.75
-  set format '%g'
-  set size ratio 0.8
-  set key outside horiz center top
-  set yrange [0:1.2] 
-  set xrange [0:40] 
-  set ytics 0.2
-  set grid 
-  set ylabel "NRC"
-  set xlabel "Substitutions in y (%)"
-  set border linewidth 1.5
-  set style line 1 lc rgb '#0060ad' lt 1 lw 4 pt 5 ps 0.4 # --- blue
-  set style line 2 lc rgb '#009900' lt 1 lw 4 pt 6 ps 0.4 # --- green
-  set style line 3 lc rgb '#dd181f' lt 1 lw 4 pt 7 ps 0.5 # --- red
-  set style line 4 lc rgb '#63006d' lt 1 lw 4 pt 8 ps 0.5 # --- ?
-  set style line 5 lc rgb '#b1006d' lt 1 lw 4 pt 1 ps 0.5 # --- ?
-  set style line 6 lc rgb '#964d1c' lt 1 lw 4 pt 10 ps 0.5 # --- ?
-  set style line 7 lc rgb '#449a93' lt 1 lw 4 pt 11 ps 0.5 # --- ?
-  plot "NRC_5-5_VALUES"  with linespoints ls 5 title "NRC 5-5", "NRC_6-4_VALUES"  with linespoints ls 4 title "NRC 6-4", "NRC_7-3_VALUES"  with linespoints ls 3 title "NRC 7-3", "NRC_8-2_VALUES"  with linespoints ls 2 title "NRC 8-2", "NRC_9-1_VALUES"  with linespoints ls 1 title "NRC 9-1"
-EOF
-
 
 fi

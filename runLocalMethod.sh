@@ -81,6 +81,7 @@ if [[ "$SIMULATE" -eq "1" ]]; then
   cat T_A T_B T_C T_D T_E T_F T_G T_H > TARGET;
   cat REFERENCE TARGET > REFERENCE_TARGET;
   cat GARBAGE TARGET > GARBAGE_TARGET;
+  cp GARBAGE_TARGET GARBAGE_TARGET2
   #
 fi
 #==============================================================================
@@ -91,6 +92,8 @@ if [[ "$COMPRESS" -eq "1" ]]; then
   (./GeCo $RELATIVE_PARAM -e -r REFERENCE GARBAGE_TARGET) &> REPORT_REFERENCE_GARBAGE_TARGET_RELATIVE
   # CONJOINT
   (./GeCo $CONJOINT_PARAM -e REFERENCE_TARGET ) &> REPORT_REFERENCE_TARGET_CONJOINT
+  # REGULAR
+  (./GeCo $CONJOINT_PARAM -e GARBAGE_TARGET2 ) &> REPORT_GARBAGE_TARGET_REGULAR
 fi
 #==============================================================================
 ###############################################################################
@@ -98,6 +101,7 @@ fi
 if [[ "$FILTER" -eq "1" ]]; then
   ./goose-filter -w 201 -d 10 -wt 2 -1 < GARBAGE_TARGET.iae > GARBAGE_TARGET.fil
   ./goose-filter -w 201 -d 10 -wt 2 -1 < REFERENCE_TARGET.iae > REFERENCE_TARGET.fil
+  ./goose-filter -w 201 -d 10 -wt 2 -1 < GARBAGE_TARGET2.iae > GARBAGE_TARGET2.fil
 fi
 #==============================================================================
 ###############################################################################
@@ -136,6 +140,23 @@ gnuplot << EOF
   unset border
   set style line 1 lt 1 lc rgb '#dd181f' lw 1
   plot "REFERENCE_TARGET.fil" u 1:2 w l lt rgb "#292929" title "normal"
+EOF
+
+gnuplot << EOF
+  reset
+  set terminal pdfcairo enhanced color
+  set output "RegularProf.pdf"
+  set auto
+  set size ratio 0.08
+  unset key
+  set yrange [0:2.5] 
+  set ytics 1
+  set grid 
+  set ylabel "BPS"
+  set xlabel "Length"
+  unset border
+  set style line 1 lt 1 lc rgb '#dd181f' lw 1
+  plot "GARBAGE_TARGET2.fil" u 1:2 w l lt rgb "#292929" title "normal"
 EOF
 
 fi

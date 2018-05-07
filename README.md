@@ -19,7 +19,7 @@ chmod +x *.sh
 ./runRearrange.sh
 </pre>
 
-Attention: external links, namely from NCBI repositories, may be broken with time.
+Attention: external links, namely from NCBI repositories, may be broken with time, although they are easily fixed.
 
 Dependencies:
 <pre>

@@ -11,7 +11,7 @@ chmod +x *.sh
 ./runComparison.sh
 ./runComparisonWithRedundancy.sh
 ./runLocalMethod.sh
-./RelativeCompressors.sh
+./rumRelativeCompressorsComparison.sh
 ./runExpectationNRC.sh
 ./runNC.sh
 ./runNRC.sh

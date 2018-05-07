@@ -267,28 +267,27 @@ fi
 ###############################################################################
 # PLOT
 if [[ "$RUN_PLOT" -eq "1" ]]; then
-rm -f DATAP;
-printf "GReEn\t%s\n" `cat results/BC_GREEN_HS5-PT5 results/BC_GREEN_HS5-GG5 results/BC_GREEN_HS9-PT9 results/BC_GREEN_HS9-GG9 results/BC_GREEN_HS13-PT13 results/BC_GREEN_HS13-GG13 results/BC_GREEN_HS17-PT17 results/BC_GREEN_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-printf "iDoComp\t%s\n" `cat results/BC_IDOCOMP_HS5-PT5 results/BC_IDOCOMP_HS5-GG5 results/BC_IDOCOMP_HS9-PT9 results/BC_IDOCOMP_HS9-GG9 results/BC_IDOCOMP_HS13-PT13 results/BC_IDOCOMP_HS13-GG13 results/BC_IDOCOMP_HS17-PT17 results/BC_IDOCOMP_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-printf "GDC2\t%s\n" `cat results/BC_GDC_HS5-PT5 results/BC_GDC_HS5-GG5 results/BC_GDC_HS9-PT9 results/BC_GDC_HS9-GG9 results/BC_GDC_HS13-PT13 results/BC_GDC_HS13-GG13 results/BC_GDC_HS17-PT17 results/BC_GDC_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-printf "GeCo\t%s\n" `cat results/BC_GECO_HS5-PT5 results/BC_GECO_HS5-GG5 results/BC_GECO_HS9-PT9 results/BC_GECO_HS9-GG9 results/BC_GECO_HS13-PT13 results/BC_GECO_HS13-GG13 results/BC_GECO_HS17-PT17 results/BC_GECO_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-###############################################################################
-echo "set terminal pdfcairo enhanced color
-set output 'bytes.pdf'
-set auto
-set boxwidth 0.45
-set xtics nomirror
-set style fill solid 1.00
-set ylabel 'Bytes'
-set xlabel 'Methods'
-# set yrange[50000000:100000000]
-# Lighter grid lines
-set grid ytics lc rgb '#C0C0C0'
-unset key
-set grid
-set format y '%.0s %c'
-set style line 2 lc rgb '#406090'
-plot 'DATAP' using 2:xtic(1) with boxes ls 2" | gnuplot -p
-cp bytes.pdf ../imgs/
-###############################################################################
+  rm -f DATAP;
+  printf "GReEn\t%s\n" `cat results/BC_GREEN_HS5-PT5 results/BC_GREEN_HS5-GG5 results/BC_GREEN_HS9-PT9 results/BC_GREEN_HS9-GG9 results/BC_GREEN_HS13-PT13 results/BC_GREEN_HS13-GG13 results/BC_GREEN_HS17-PT17 results/BC_GREEN_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
+  printf "iDoComp\t%s\n" `cat results/BC_IDOCOMP_HS5-PT5 results/BC_IDOCOMP_HS5-GG5 results/BC_IDOCOMP_HS9-PT9 results/BC_IDOCOMP_HS9-GG9 results/BC_IDOCOMP_HS13-PT13 results/BC_IDOCOMP_HS13-GG13 results/BC_IDOCOMP_HS17-PT17 results/BC_IDOCOMP_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
+  printf "GDC2\t%s\n" `cat results/BC_GDC_HS5-PT5 results/BC_GDC_HS5-GG5 results/BC_GDC_HS9-PT9 results/BC_GDC_HS9-GG9 results/BC_GDC_HS13-PT13 results/BC_GDC_HS13-GG13 results/BC_GDC_HS17-PT17 results/BC_GDC_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
+  printf "GeCo\t%s\n" `cat results/BC_GECO_HS5-PT5 results/BC_GECO_HS5-GG5 results/BC_GECO_HS9-PT9 results/BC_GECO_HS9-GG9 results/BC_GECO_HS13-PT13 results/BC_GECO_HS13-GG13 results/BC_GECO_HS17-PT17 results/BC_GECO_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
+  ##
+  echo "set terminal pdfcairo enhanced color
+  set output 'bytes.pdf'
+  set auto
+  set boxwidth 0.45
+  set xtics nomirror
+  set style fill solid 1.00
+  set ylabel 'Bytes'
+  set xlabel 'Methods'
+  # set yrange[50000000:100000000]
+  # Lighter grid lines
+  set grid ytics lc rgb '#C0C0C0'
+  unset key
+  set grid
+  set format y '%.0s %c'
+  set style line 2 lc rgb '#406090'
+  plot 'DATAP' using 2:xtic(1) with boxes ls 2" | gnuplot -p
+  cp bytes.pdf ../imgs/
 fi

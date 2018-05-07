@@ -13,7 +13,7 @@ RUN_IDOCOMP=1;
 RUN_GREEN=1; # GREEN ALREADY WITH GOOD COMPRESSION PARAMETERS
 RUN_GECO=1;
 ###############################################################################
-RUN_PLOT=1;
+RUN_PLOT=0;
 ###############################################################################
 #
 function Parse {
@@ -86,19 +86,15 @@ cd progs/
 ###############################################################################
 # GET iDoComp =================================================================
 if [[ "$INSTALL_IDOCOMP" -eq "1" ]]; then
-  rm -fr iDoComp_website_v1*
-  wget http://web.stanford.edu/~iochoa/iDoComp_website_v1.tar.gz
-  tar -xvzf iDoComp_website_v1.tar.gz
-  cd iDoComp_website_v1/sais-lite-2.4.1/source-code/
+  rm -fr iDoComp/
+  git clone https://github.com/mikelhernaez/iDoComp.git
+  cd iDoComp/sais-lite-2.4.1/
   gcc -o ../sa.run sa_generator.c sais.c -lm
-  cd ../../
-  cd simulations/source_code/
-  gcc -o ../iDoComp.run idc_generate_mapping.c main.c stats.c arith.c \
+  cd ../
+  gcc -o iDoComp.run idc_generate_mapping.c main.c stats.c arith.c \
   fasta_decompressor.c idc_load_chr.c os_stream.c fasta_compressor.c \
   sam_stream.c -lm
-  cd ../../../
-  mv iDoComp_website_v1 idocomp
-  rm -f iDoComp_website_v1.tar.gz
+  cd ../
 fi
 ###############################################################################
 # GET GECO ====================================================================
@@ -276,7 +272,6 @@ printf "GReEn\t%s\n" `cat results/BC_GREEN_HS5-PT5 results/BC_GREEN_HS5-GG5 resu
 printf "iDoComp\t%s\n" `cat results/BC_IDOCOMP_HS5-PT5 results/BC_IDOCOMP_HS5-GG5 results/BC_IDOCOMP_HS9-PT9 results/BC_IDOCOMP_HS9-GG9 results/BC_IDOCOMP_HS13-PT13 results/BC_IDOCOMP_HS13-GG13 results/BC_IDOCOMP_HS17-PT17 results/BC_IDOCOMP_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
 printf "GDC2\t%s\n" `cat results/BC_GDC_HS5-PT5 results/BC_GDC_HS5-GG5 results/BC_GDC_HS9-PT9 results/BC_GDC_HS9-GG9 results/BC_GDC_HS13-PT13 results/BC_GDC_HS13-GG13 results/BC_GDC_HS17-PT17 results/BC_GDC_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
 printf "GeCo\t%s\n" `cat results/BC_GECO_HS5-PT5 results/BC_GECO_HS5-GG5 results/BC_GECO_HS9-PT9 results/BC_GECO_HS9-GG9 results/BC_GECO_HS13-PT13 results/BC_GECO_HS13-GG13 results/BC_GECO_HS17-PT17 results/BC_GECO_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-fi
 ###############################################################################
 echo "set terminal pdfcairo enhanced color
 set output 'bytes.pdf'
@@ -295,5 +290,5 @@ set format y '%.0s %c'
 set style line 2 lc rgb '#406090'
 plot 'DATAP' using 2:xtic(1) with boxes ls 2" | gnuplot -p
 cp bytes.pdf ../imgs/
-
 ###############################################################################
+fi

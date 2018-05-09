@@ -20,6 +20,14 @@ function Parse {
   cat HEADER XTMP > datasets/$1;
   }
 #
+function RunDeliminate {
+  cp ../../datasets/$1 $1.fa
+  rm -f $1.fa.dlim
+  (time ./delim a $1.fa ) &> ../../results/C_DEL_$1
+  ls -la $1.fa.dlim > ../../results/BC_DEL_$1
+  cd ..
+  }
+#
 function RunMFCompress {
   cp ../../datasets/$1 $1.fa
   rm -f chimpanze.fna.mfc
@@ -38,19 +46,21 @@ function RunGeCo {
   cd ..
   }
 #
-function RunDeliminate {
-  cp ../../datasets/$1 $1.fa
-  rm -f $1.fa.dlim
-  (time ./delim a $1.fa ) &> ../../results/C_DEL_$1
-  ls -la $1.fa.dlim > ../../results/BC_DEL_$1
-  cd ..
-  }
-#
 ###############################################################################
 # INSTALL
 mkdir -p datasets
 mkdir -p progs
 cd progs/
+###############################################################################
+# GET DELIMINATE ===============================================================
+if [[ "$INSTALL_GREEN" -eq "1" ]]; then
+  rm -f DELIMINATE_LINUX_64bit.tar.gz;
+  DELSEV="metagenomics.atc.tcs.com/Compression_archive";
+  wget http://$DELSEV/DELIMINATE_LINUX_64bit.tar.gz
+  tar -xzf DELIMINATE_LINUX_64bit.tar.gz
+  mv EXECUTABLES deliminate
+  rm -f DELIMINATE_LINUX_64bit.tar.gz;
+fi
 ###############################################################################
 # GET MFCOMPRESS ==============================================================
 if [[ "$INSTALL_MFCOMPRESS" -eq "1" ]]; then
@@ -77,16 +87,6 @@ if [[ "$INSTALL_GECO" -eq "1" ]]; then
   cp GeCo ../
   cp GeDe ../
   cd ../../
-fi
-###############################################################################
-# GET DELIMINATE ===============================================================
-if [[ "$INSTALL_GREEN" -eq "1" ]]; then
-  rm -f DELIMINATE_LINUX_64bit.tar.gz;
-  DELSEV="metagenomics.atc.tcs.com/Compression_archive";
-  wget http://$DELSEV/DELIMINATE_LINUX_64bit.tar.gz
-  tar -xzf DELIMINATE_LINUX_64bit.tar.gz
-  mv EXECUTABLES deliminate
-  rm -f DELIMINATE_LINUX_64bit.tar.gz;
 fi
 ###############################################################################
 cd ..
@@ -159,31 +159,6 @@ if [[ "$RUN_DELIMINATE" -eq "1" ]]; then
   echo "Done!";
 fi
 #==============================================================================
-if [[ "$RUN_GECO" -eq "1" ]]; then
-  echo "Running GeCo ...";
-  mkdir -p results
-  cd progs/geco
-  #
-  RunGeCo "HS5"
-  RunGeCo "PT5"
-  RunGeCo "GG5"
-  #
-  RunGeCo "HS9"
-  RunGeCo "PT9"
-  RunGeCo "GG9"
-  #
-  RunGeCo "HS13"
-  RunGeCo "PT13"
-  RunGeCo "GG13"
-  #
-  RunGeCo "HS17"
-  RunGeCo "PT17"
-  RunGeCo "GG17"
-  # 
-  cd ../../
-  echo "Done!";
-fi
-#==============================================================================
 if [[ "$RUN_MFCOMPRESS" -eq "1" ]]; then
   echo "Running MFCompress ...";
   mkdir -p results
@@ -205,6 +180,31 @@ if [[ "$RUN_MFCOMPRESS" -eq "1" ]]; then
   RunMFCompress "PT17"
   RunMFCompress "GG17"
   #
+  cd ../../
+  echo "Done!";
+fi
+#==============================================================================
+if [[ "$RUN_GECO" -eq "1" ]]; then
+  echo "Running GeCo ...";
+  mkdir -p results
+  cd progs/geco
+  #
+  RunGeCo "HS5"
+  RunGeCo "PT5"
+  RunGeCo "GG5"
+  #
+  RunGeCo "HS9"
+  RunGeCo "PT9"
+  RunGeCo "GG9"
+  #
+  RunGeCo "HS13"
+  RunGeCo "PT13"
+  RunGeCo "GG13"
+  #
+  RunGeCo "HS17"
+  RunGeCo "PT17"
+  RunGeCo "GG17"
+  # 
   cd ../../
   echo "Done!";
 fi

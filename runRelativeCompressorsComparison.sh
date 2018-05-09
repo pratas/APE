@@ -13,7 +13,8 @@ RUN_IDOCOMP=1;
 RUN_GREEN=1; # GREEN ALREADY WITH GOOD COMPRESSION PARAMETERS
 RUN_GECO=1;
 ###############################################################################
-RUN_PLOT=0;
+RUN_JOIN=1;
+RUN_PLOT=1;
 ###############################################################################
 #
 function Parse {
@@ -59,22 +60,22 @@ function RunGeCo {
 function RunIDoComp {
   # 1 - TARGET
   # 2 - REFERENCE
-  cp ../../datasets/$1 .
-  cp ../../datasets/$2 .
+  cp ../../datasets/$1 $1.fa
+  cp ../../datasets/$2 $2.fa
   cd sais-lite-2.4.1/
   rm -fr sa ref tar
   mkdir sa ref tar;
-  cp ../$2 ref/$2.fa
-  (./generateSA.sh ref sa ) &> TIME_SA
+  cp ../$2.fa ref/$2.fa
+  (./sa.run ref/$2.fa sa/$2-SA ) &> TIME_SA
   TIMEOFSA=`cat TIME_SA | grep "..." | awk '{ print $5;}'`
-  mv ../$1 tar/$1.fa
-  echo "ref/$2.fa tar/$1.fa sa/$2.sa" > f.txt;
-  cp ../simulations/iDoComp.run .
+  mv ../$1.fa tar/$1.fa
+  echo "ref/$2.fa tar/$1.fa sa/$2-SA" > f.txt;
+  cp ../iDoComp.run .
   (./iDoComp.run c f.txt OUT ) &> ../../../results/C_IDOCOMP_$1-$2
   cat ../../../results/C_IDOCOMP_$1-$2 | grep "Compressed Size:" | awk '{ print $3; }' > ../../../results/BC_IDOCOMP_$1-$2
   CTIME=`cat ../../../results/C_IDOCOMP_$1-$2 | grep "CPU T" | awk '{ print $4;}'`
   echo "$TIMEOFSA+$CTIME" | bc -l > ../../../results/CT_IDOCOMP_$1-$2
-  rm -f $2 $1;
+  rm -f $2.fa $1.fa;
   cd ..
   }
 #
@@ -86,14 +87,16 @@ cd progs/
 ###############################################################################
 # GET iDoComp =================================================================
 if [[ "$INSTALL_IDOCOMP" -eq "1" ]]; then
-  rm -fr iDoComp/
+  rm -fr idocomp/
   git clone https://github.com/mikelhernaez/iDoComp.git
   cd iDoComp/sais-lite-2.4.1/
-  gcc -o ../sa.run sa_generator.c sais.c -lm
+  make
   cd ../
   gcc -o iDoComp.run idc_generate_mapping.c main.c stats.c arith.c \
   fasta_decompressor.c idc_load_chr.c os_stream.c fasta_compressor.c \
   sam_stream.c -lm
+  cd ../
+  mv iDoComp idocomp
   cd ../
 fi
 ###############################################################################
@@ -204,7 +207,7 @@ fi
 if [[ "$RUN_IDOCOMP" -eq "1" ]]; then
   echo "Running iDoComp ...";
   mkdir -p results
-  cd progs/idocomp
+  cd progs/idocomp/
   # target $1, reference $2:
   RunIDoComp "HS5" "PT5"
   RunIDoComp "HS5" "GG5"
@@ -266,13 +269,17 @@ fi
 #==============================================================================
 ###############################################################################
 # PLOT
-if [[ "$RUN_PLOT" -eq "1" ]]; then
+if [[ "$RUN_JOIN" -eq "1" ]]; then
   rm -f DATAP;
   printf "GReEn\t%s\n" `cat results/BC_GREEN_HS5-PT5 results/BC_GREEN_HS5-GG5 results/BC_GREEN_HS9-PT9 results/BC_GREEN_HS9-GG9 results/BC_GREEN_HS13-PT13 results/BC_GREEN_HS13-GG13 results/BC_GREEN_HS17-PT17 results/BC_GREEN_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
   printf "iDoComp\t%s\n" `cat results/BC_IDOCOMP_HS5-PT5 results/BC_IDOCOMP_HS5-GG5 results/BC_IDOCOMP_HS9-PT9 results/BC_IDOCOMP_HS9-GG9 results/BC_IDOCOMP_HS13-PT13 results/BC_IDOCOMP_HS13-GG13 results/BC_IDOCOMP_HS17-PT17 results/BC_IDOCOMP_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
   printf "GDC2\t%s\n" `cat results/BC_GDC_HS5-PT5 results/BC_GDC_HS5-GG5 results/BC_GDC_HS9-PT9 results/BC_GDC_HS9-GG9 results/BC_GDC_HS13-PT13 results/BC_GDC_HS13-GG13 results/BC_GDC_HS17-PT17 results/BC_GDC_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-  printf "GeCo\t%s\n" `cat results/BC_GECO_HS5-PT5 results/BC_GECO_HS5-GG5 results/BC_GECO_HS9-PT9 results/BC_GECO_HS9-GG9 results/BC_GECO_HS13-PT13 results/BC_GECO_HS13-GG13 results/BC_GECO_HS17-PT17 results/BC_GECO_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
-  ##
+  printf "GeCo\t%s\n" `cat results/BC_GECO_REF_HS5-PT5 results/BC_GECO_REF_HS5-GG5 results/BC_GECO_REF_HS9-PT9 results/BC_GECO_REF_HS9-GG9 results/BC_GECO_REF_HS13-PT13 results/BC_GECO_REF_HS13-GG13 results/BC_GECO_REF_HS17-PT17 results/BC_GECO_REF_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAP
+fi
+#==============================================================================
+###############################################################################
+# PLOT
+if [[ "$RUN_PLOT" -eq "1" ]]; then
   echo "set terminal pdfcairo enhanced color
   set output 'bytes.pdf'
   set auto
@@ -281,7 +288,7 @@ if [[ "$RUN_PLOT" -eq "1" ]]; then
   set style fill solid 1.00
   set ylabel 'Bytes'
   set xlabel 'Methods'
-  # set yrange[50000000:100000000]
+  set yrange[0:180000000]
   # Lighter grid lines
   set grid ytics lc rgb '#C0C0C0'
   unset key
@@ -289,5 +296,4 @@ if [[ "$RUN_PLOT" -eq "1" ]]; then
   set format y '%.0s %c'
   set style line 2 lc rgb '#406090'
   plot 'DATAP' using 2:xtic(1) with boxes ls 2" | gnuplot -p
-  cp bytes.pdf ../imgs/
-fi
+###############################################################################

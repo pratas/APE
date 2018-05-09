@@ -20,17 +20,6 @@ function Parse {
   cat HEADER XTMP > datasets/$1;
   }
 #
-function RunGDC2 {
-  # 1 - TARGET
-  # 2 - REFERENCE
-  cp ../../datasets/$1 .
-  cp ../../datasets/$2 .
-  rm -f xxx*
-  (time ./GDC2 c xxx $2 $1 ) &> ../../results/C_GDC_$1-$2
-  ls -la xxx.gdc2_rc | awk '{ print $5;}' > ../../results/BC_GDC_$1-$2
-  rm -f $2 $1;
-  }
-#
 function RunGReEn {
   PARAM=" -v " # -i -k 16 -f 5 ";
   # 1 - TARGET
@@ -60,20 +49,7 @@ function RunIDoComp {
   # 2 - REFERENCE
   cp ../../datasets/$1 $1.fa
   cp ../../datasets/$2 $2.fa
-  cd sais-lite-2.4.1/
-  rm -fr sa ref tar
-  mkdir sa ref tar;
-  cp ../$2.fa ref/$2.fa
-  (./sa.run ref/$2.fa sa/$2-SA ) &> TIME_SA
-  TIMEOFSA=`cat TIME_SA | grep "..." | awk '{ print $5;}'`
-  mv ../$1.fa tar/$1.fa
-  echo "ref/$2.fa tar/$1.fa sa/$2-SA" > f.txt;
-  cp ../iDoComp.run .
-  (./iDoComp.run c f.txt OUT ) &> ../../../results/C_IDOCOMP_$1-$2
-  cat ../../../results/C_IDOCOMP_$1-$2 | grep "Compressed Size:" | awk '{ print $3; }' > ../../../results/BC_IDOCOMP_$1-$2
-  CTIME=`cat ../../../results/C_IDOCOMP_$1-$2 | grep "CPU T" | awk '{ print $4;}'`
-  echo "$TIMEOFSA+$CTIME" | bc -l > ../../../results/CT_IDOCOMP_$1-$2
-  rm -f $2.fa $1.fa;
+  
   cd ..
   }
 #
@@ -110,32 +86,16 @@ if [[ "$INSTALL_GECO" -eq "1" ]]; then
   cd ../../
 fi
 ###############################################################################
-# GET GREEN ===================================================================
+# GET DELIMINATE ===============================================================
 if [[ "$INSTALL_GREEN" -eq "1" ]]; then
-  rm -fr GReEn1.tar.gz green
-  wget http://bioinformatics.ua.pt/wp-content/uploads/2014/09/GReEn1.tar.gz
-  tar -xvzf GReEn1.tar.gz
-  mv GReEn1/ green/
-  cd green/
-  make
-  cd ..
-  rm -fr GReEn1.tar.gz
+  rm -f DELIMINATE_LINUX_64bit.tar.gz;
+  DELSEV="metagenomics.atc.tcs.com/Compression_archive";
+  wget http://$DELSEV/DELIMINATE_LINUX_64bit.tar.gz
+  tar -xzf DELIMINATE_LINUX_64bit.tar.gz
+  mv EXECUTABLES deliminate
+  rm -f DELIMINATE_LINUX_64bit.tar.gz;
 fi
 ###############################################################################
-# GET GDC =====================================================================
-if [[ "$INSTALL_GDC2" -eq "1" ]]; then
-  rm -f gdc2.tat.gz
-  wget http://sun.aei.polsl.pl/REFRESH/gdc/downloads/2.0/gdc2.tar.gz
-  tar -xzf gdc2.tar.gz
-  cd gdc2/gdc_2/Gdc2/
-  # LIBRARIES ORDER ACCESS CREATE SOME PROBLES (WE ADD THEM TO THE END)
-  printf '\nall: gdc2 \n\nCC      = g++\nCFLAGS  = -Wall -O3 -m64 -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11 \nCLINK   = -lm -O3 -m64 -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -std=c++11 -lz \n\n.cpp.o: \n\t$(CC) $(CFLAGS) -c $< -o $@ \n\ngdc2: c1stage.o c2stage.o fasta.o hasher.o main.o p1stage.o qsmodel.o queue.o rangecod.o timer.o \n\t$(CC) $(CLINK) -o gdc2 c1stage.o c2stage.o fasta.o hasher.o main.o p1stage.o qsmodel.o queue.o rangecod.o timer.o ../libs/libaelf64.a -lz -lpthread \n\nclean: \n\trm gdc2 \n\trm *.o \n' > Makefile;
-  make clean ; make
-  cp gdc2 ../../GDC2 # TO NOT OVERLAP FOLDER NAME
-  cd ../../../
-  rm -f gdc2.tar.gz
-fi
-##############################################################################
 cd ..
 ###############################################################################
 # DOWNLOAD

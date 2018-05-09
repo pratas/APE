@@ -1,16 +1,14 @@
 #!/bin/bash
 ###############################################################################
-INSTALL_GDC2=1;
-INSTALL_IDOCOMP=1;
-INSTALL_GREEN=1;
+INSTALL_DELIMINATE=1;
+INSTALL_MFCOMPRESS=1;
 INSTALL_GECO=1;
 ###############################################################################
 DOWNLOAD=1;
 PARSE=1;
 ###############################################################################
-RUN_GDC2=1;
-RUN_IDOCOMP=1;
-RUN_GREEN=1; # GREEN ALREADY WITH GOOD COMPRESSION PARAMETERS
+RUN_DELIMINATE=1;
+RUN_MFCOMPRESS=1;
 RUN_GECO=1;
 ###############################################################################
 RUN_JOIN=1;

@@ -83,19 +83,19 @@ mkdir -p datasets
 mkdir -p progs
 cd progs/
 ###############################################################################
-# GET iDoComp =================================================================
-if [[ "$INSTALL_IDOCOMP" -eq "1" ]]; then
-  rm -fr idocomp/
-  git clone https://github.com/mikelhernaez/iDoComp.git
-  cd iDoComp/sais-lite-2.4.1/
+# GET MFCOMPRESS ==============================================================
+if [[ "$INSTALL_MFCOMPRESS" -eq "1" ]]; then
+  rm -rf MFCompress-src-1.01.tgz MFCompress-src-1.01/
+  wget http://sweet.ua.pt/ap/software/mfcompress/MFCompress-src-1.01.tgz
+  tar -xzf MFCompress-src-1.01.tgz
+  mv MFCompress-src-1.01/ mfcompress
+  cd mfcompress/
+  cp Makefile.linux Makefile # make -f Makefile.linux
   make
-  cd ../
-  gcc -o iDoComp.run idc_generate_mapping.c main.c stats.c arith.c \
-  fasta_decompressor.c idc_load_chr.c os_stream.c fasta_compressor.c \
-  sam_stream.c -lm
-  cd ../
-  mv iDoComp idocomp
-  cd ../
+  cp MFCompressC ..
+  cp MFCompressD ..
+  cd ..
+  rm -f MFCompress-src-1.01.tgz;
 fi
 ###############################################################################
 # GET GECO ====================================================================

@@ -238,9 +238,9 @@ fi
 # PLOT
 if [[ "$RUN_JOIN" -eq "1" ]]; then
   rm -f DATAPN;
-  printf "Deliminate\t%s\n" `cat results/BC_DEL_HS5-PT5 results/BC_DEL_HS5-GG5 results/BC_DEL_HS9-PT9 results/BC_DEL_HS9-GG9 results/BC_DEL_HS13-PT13 results/BC_DEL_HS13-GG13 results/BC_DEL_HS17-PT17 results/BC_DEL_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAPN
-  printf "MFCompress\t%s\n" `cat results/BC_MFC_HS5-PT5 results/BC_MFC_HS5-GG5 results/BC_MFC_HS9-PT9 results/BC_MFC_HS9-GG9 results/BC_MFC_HS13-PT13 results/BC_MFC_HS13-GG13 results/BC_MFC_HS17-PT17 results/BC_MFC_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAPN
-  printf "GeCo\t%s\n" `cat results/BC_GECO_REF_HS5-PT5 results/BC_GECO_REF_HS5-GG5 results/BC_GECO_REF_HS9-PT9 results/BC_GECO_REF_HS9-GG9 results/BC_GECO_REF_HS13-PT13 results/BC_GECO_REF_HS13-GG13 results/BC_GECO_REF_HS17-PT17 results/BC_GECO_REF_HS17-GG17 | awk '{s+=$1}END{print s}'` >> DATAPN
+  printf "Deliminate\t%s\n" `cat results/BC_DEL_HS5 results/BC_DEL_PT5 results/BC_DEL_GG5 results/BC_DEL_HS9 results/BC_DEL_PT9 results/BC_DEL_GG9 results/BC_DEL_HS13 results/BC_DEL_PT13 results/BC_DEL_GG13 results/BC_DEL_HS17 results/BC_DEL_GG17 results/BC_DEL_GG17 | awk '{s+=$1}END{print s}'` >> DATAPN
+  printf "MFCompress\t%s\n" `cat results/BC_MFC_HS5 results/BC_MFC_PT5 results/BC_MFC_GG5 results/BC_MFC_HS9 results/BC_MFC_PT9 results/BC_MFC_GG9 results/BC_MFC_HS13 results/BC_MFC_PT13 results/BC_MFC_GG13 results/BC_MFC_HS17 results/BC_MFC_GG17 results/BC_MFC_GG17 | awk '{s+=$1}END{print s}'` >> DATAPN
+  printf "GeCo\t%s\n" `cat results/BC_GECO_HS5 results/BC_GECO_PT5 results/BC_GECO_GG5 results/BC_GECO_HS9 results/BC_GECO_PT9 results/BC_GECO_GG9 results/BC_GECO_HS13 results/BC_GECO_PT13 results/BC_GECO_GG13 results/BC_GECO_HS17 results/BC_GECO_GG17 results/BC_GECO_GG17 | awk '{s+=$1}END{print s}'` >> DATAPN
 fi
 #==============================================================================
 ###############################################################################

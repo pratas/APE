@@ -20,31 +20,25 @@ function Parse {
   cat HEADER XTMP > datasets/$1;
   }
 #
-function RunGReEn {
-  PARAM=" -v " # -i -k 16 -f 5 ";
-  # 1 - TARGET
-  # 2 - REFERENCE
-  cp ../../datasets/$1 .
-  cp ../../datasets/$2 .
-  rm -f $1.co
-  (time ./GReEnC $PARAM -o $1.co $2 $1 ) &> ../../results/C_GREEN_$1-$2
-  ls -la $1.co | awk '{ print $5;}' > ../../results/BC_GREEN_$1-$2
-  rm -f $2 $1;
+function RunMFCompress {
+  cp ../../datasets/$1 $1.fa
+  rm -f chimpanze.fna.mfc
+  (time ./MFCompressC -v -o chimpanze.fna.mfc chimpanze.fna ) &> ../../results/C_MFCOMPRESS_CHIMPANZE
+  ls -la chimpanze.fna.mfc > ../../results/BC_MFCOMPRESS_CHIMPANZE
+  cd ..
   }
 #
 function RunGeCo {
-  PARAM=" -rm 20:200:1:5/10 -rm 14:100:1:0/0 -rm 13:20:0:0/0 -rm 11:10:0:0/0 -rm 9:1:0:0/0 -c 50 -g 0.88 ";
-  # 1 - TARGET
-  # 2 - REFERENCE
+  PARAM=" -tm 20:200:1:5/10 -tm 14:100:1:0/0 -tm 13:20:0:0/0 -tm 11:10:0:0/0 -tm 9:1:0:0/0 -c 50 -g 0.88 ";
   cp ../../datasets/$1 .
-  cp ../../datasets/$2 .
   rm -f $1.co
-  (time ./GeCo $PARAM -r $2 $1 ) &> ../../results/C_GECO_REF_$1-$2
-  ls -la $1.co | awk '{ print $5;}' > ../../results/BC_GECO_REF_$1-$2
-  rm -f $2 $1;
+  (time ./GeCo $PARAM $1 ) &> ../../results/C_GECO_$1
+  ls -la $1.co | awk '{ print $5;}' > ../../results/BC_GECO_$1
+  rm -f $1;
+  cd ..
   }
 #
-function RunDelim {
+function RunDeliminate {
   cp ../../datasets/$1 $1.fa
   rm -f $1.fa.dlim
   (time ./delim a $1.fa ) &> ../../results/C_DELIMINATE_$1

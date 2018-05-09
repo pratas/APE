@@ -44,12 +44,11 @@ function RunGeCo {
   rm -f $2 $1;
   }
 #
-function RunIDoComp {
-  # 1 - TARGET
-  # 2 - REFERENCE
+function RunDelim {
   cp ../../datasets/$1 $1.fa
-  cp ../../datasets/$2 $2.fa
-  
+  rm -f $1.fa.dlim
+  (time ./delim a $1.fa ) &> ../../results/C_DELIMINATE_$1
+  ls -la $1.fa.dlim > ../../results/BC_DELIMINATE_$1
   cd ..
   }
 #

@@ -1,5 +1,7 @@
 #!/bin/bash
 ###############################################################################
+INSTALL_DEPENDENCIES=0;
+#
 INSTALL_DELIMINATE=1;
 INSTALL_MFCOMPRESS=1;
 INSTALL_GECO=1;
@@ -13,6 +15,29 @@ RUN_GECO=1;
 ###############################################################################
 RUN_JOIN=1;
 RUN_PLOT=1;
+###############################################################################
+#
+if [[ "$INSTALL_DEPENDENCIES" -eq "1" ]]; then
+  # GET 7ZIP ==================================================================
+  P7ZIPPATH="projects/p7zip/files/latest";
+  rm -f FILES
+  wget http://sourceforge.net/$P7ZIPPATH/download?source=typ_redirect \
+  -O FILES.tar.bz2
+  tar -xjf FILES.tar.bz2
+  cd p7zip_15.14.1/
+  make all
+  cd ..
+  # GET ZLIB ==================================================================
+  rm -f zlib_1.2.8.dfsg.orig.tar.gz
+  wget \
+  https://launchpad.net/ubuntu/+archive/primary/+files/zlib_1.2.8.dfsg.orig.tar.gz
+  tar -xzf zlib_1.2.8.dfsg.orig.tar.gz
+  cd zlib-1.2.8/
+  ./configure
+  make
+  cd ..
+fi
+#
 ###############################################################################
 #
 function Parse {

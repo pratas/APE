@@ -23,8 +23,8 @@ function Parse {
 function RunMFCompress {
   cp ../../datasets/$1 $1.fa
   rm -f chimpanze.fna.mfc
-  (time ./MFCompressC -v -o chimpanze.fna.mfc chimpanze.fna ) &> ../../results/C_MFCOMPRESS_CHIMPANZE
-  ls -la chimpanze.fna.mfc > ../../results/BC_MFCOMPRESS_CHIMPANZE
+  (time ./MFCompressC -v -o chimpanze.fna.mfc chimpanze.fna ) &> ../../results/C_MFC_$1
+  ls -la chimpanze.fna.mfc > ../../results/BC_MFC_$1
   cd ..
   }
 #
@@ -41,8 +41,8 @@ function RunGeCo {
 function RunDeliminate {
   cp ../../datasets/$1 $1.fa
   rm -f $1.fa.dlim
-  (time ./delim a $1.fa ) &> ../../results/C_DELIMINATE_$1
-  ls -la $1.fa.dlim > ../../results/BC_DELIMINATE_$1
+  (time ./delim a $1.fa ) &> ../../results/C_DEL_$1
+  ls -la $1.fa.dlim > ../../results/BC_DEL_$1
   cd ..
   }
 #
@@ -134,43 +134,26 @@ if [[ "$PARSE" -eq "1" ]]; then
   fi
 #
 # RUN =========================================================================
-if [[ "$RUN_GDC2" -eq "1" ]]; then
-  echo "Running GDC2 ...";
+if [[ "$RUN_DELIMINATE" -eq "1" ]]; then
+  echo "Running DELIMINATE ...";
   mkdir -p results
-  cd progs/gdc2
-  # target $1, reference $2:
-  RunGDC2 "HS5" "PT5"
-  RunGDC2 "HS5" "GG5"
+  cd progs/deliminate/
   #
-  RunGDC2 "HS9" "PT9"
-  RunGDC2 "HS9" "GG9"
+  RunDeliminate "HS5"
+  RunDeliminate "PT5"
+  RunDeliminate "GG5"
   #
-  RunGDC2 "HS13" "PT13"
-  RunGDC2 "HS13" "GG13"
+  RunDeliminate "HS9"
+  RunDeliminate "PT9"
+  RunDeliminate "GG9"
   #
-  RunGDC2 "HS17" "PT17"
-  RunGDC2 "HS17" "GG17"
-  # 
-  cd ../../
-  echo "Done!";
-fi
-#==============================================================================
-if [[ "$RUN_IDOCOMP" -eq "1" ]]; then
-  echo "Running iDoComp ...";
-  mkdir -p results
-  cd progs/idocomp/
-  # target $1, reference $2:
-  RunIDoComp "HS5" "PT5"
-  RunIDoComp "HS5" "GG5"
+  RunDeliminate "HS13"
+  RunDeliminate "PT13"
+  RunDeliminate "GG13"
   #
-  RunIDoComp "HS9" "PT9"
-  RunIDoComp "HS9" "GG9"
-  #
-  RunIDoComp "HS13" "PT13"
-  RunIDoComp "HS13" "GG13"
-  #
-  RunIDoComp "HS17" "PT17"
-  RunIDoComp "HS17" "GG17"
+  RunDeliminate "HS17"
+  RunDeliminate "PT17"
+  RunDeliminate "GG17"
   # 
   cd ../../
   echo "Done!";
@@ -180,40 +163,48 @@ if [[ "$RUN_GECO" -eq "1" ]]; then
   echo "Running GeCo ...";
   mkdir -p results
   cd progs/geco
-  # target $1, reference $2:
-  RunGeCo "HS5" "PT5"
-  RunGeCo "HS5" "GG5"
   #
-  RunGeCo "HS9" "PT9"
-  RunGeCo "HS9" "GG9"
+  RunGeCo "HS5"
+  RunGeCo "PT5"
+  RunGeCo "GG5"
   #
-  RunGeCo "HS13" "PT13"
-  RunGeCo "HS13" "GG13"
+  RunGeCo "HS9"
+  RunGeCo "PT9"
+  RunGeCo "GG9"
   #
-  RunGeCo "HS17" "PT17"
-  RunGeCo "HS17" "GG17"
+  RunGeCo "HS13"
+  RunGeCo "PT13"
+  RunGeCo "GG13"
+  #
+  RunGeCo "HS17"
+  RunGeCo "PT17"
+  RunGeCo "GG17"
   # 
   cd ../../
   echo "Done!";
 fi
 #==============================================================================
-if [[ "$RUN_GREEN" -eq "1" ]]; then
-  echo "Running GReEn ...";
+if [[ "$RUN_MFCOMPRESS" -eq "1" ]]; then
+  echo "Running MFCompress ...";
   mkdir -p results
-  cd progs/green
-  # target $1, reference $2:
-  RunGReEn "HS5" "PT5"
-  RunGReEn "HS5" "GG5"
+  cd progs/mfcompress
   #
-  RunGReEn "HS9" "PT9"
-  RunGReEn "HS9" "GG9"
+  RunMFCompress "HS5"
+  RunMFCompress "PT5"
+  RunMFCompress "GG5"
   #
-  RunGReEn "HS13" "PT13"
-  RunGReEn "HS13" "GG13"
+  RunMFCompress "HS9"
+  RunMFCompress "PT9"
+  RunMFCompress "GG9"
   #
-  RunGReEn "HS17" "PT17"
-  RunGReEn "HS17" "GG17"
-  # 
+  RunMFCompress "HS13"
+  RunMFCompress "PT13"
+  RunMFCompress "GG13"
+  #
+  RunMFCompress "HS17"
+  RunMFCompress "PT17"
+  RunMFCompress "GG17"
+  #
   cd ../../
   echo "Done!";
 fi

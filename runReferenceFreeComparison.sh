@@ -262,4 +262,5 @@ if [[ "$RUN_PLOT" -eq "1" ]]; then
   set format y '%.0s %c'
   set style line 2 lc rgb '#406090'
   plot 'DATAPN' using 2:xtic(1) with boxes ls 2" | gnuplot -p
+fi
 ###############################################################################

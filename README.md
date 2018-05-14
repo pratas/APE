@@ -7,9 +7,19 @@ cd APE/
 </pre>
 Run:
 <pre>
-chmod +x runPrimates.sh
-./runPrimates.sh
+chmod +x *.sh
+./runComparison.sh
+./runComparisonWithRedundancy.sh
+./runLocalMethod.sh
+./runRelativeCompressorsComparison.sh
+./runExpectationNRC.sh
+./runNC.sh
+./runNRC.sh
+./runNCD.sh
+./runRearrange.sh
 </pre>
+
+Attention: external links, namely from NCBI repositories, may be broken with time, although they are easily fixed.
 
 Dependencies:
 <pre>

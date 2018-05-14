@@ -30,6 +30,10 @@ Dependencies:
 <pre>
 GeCo
 Goose
+MFCompress
+GReEn
+iDoComp
+GDC2
 </pre>
 Although they are installed and used automatically.
 

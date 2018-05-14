@@ -3,7 +3,7 @@ alt="APE" height="84" border="0" /><br><br>
 <b>APE</b> - Acceleration Patterns of Evolution</p>
 <br>
 
-Download and installation:
+Download:
 <pre>
 git clone https://github.com/pratas/APE.git
 cd APE/

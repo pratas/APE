@@ -1,5 +1,5 @@
 <p align="center"><img src="imgs/logo.png"
-alt="APE" height="94" border="0" /><br>
+alt="APE" height="84" border="0" /><br><br>
 <b>APE</b> - Acceleration Patterns of Evolution</p>
 <br>
 Download and installation:

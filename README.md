@@ -5,12 +5,14 @@ alt="APE" height="72" border="0" /><br><br>
 
 <p align="Justify">
 APE compares directly two information measures:
+<pre>
   Normalized Compression Distance (NCD)
-  Normalized Relative Compression (NRC). 
+  Normalized Relative Compression (NRC)
+</pre>
 Both measures answer different questions. While the NCD measures information between strings, the NRC measures the information across strings. This leads to the problem of finding out which measure (or question) is more suitable for the answer we need.
-  
-For computing both, we use a state-of-the-art DNA sequence compressor (GeCo) that we benchmark with some top compressors in different compression modes. Then, we apply the compressor on DNA sequences with different scales and natures, first, using synthetic sequences and, then, on real DNA sequences. The last include mitochondrial DNA (mtDNA), messenger RNA (mRNA) and genomic DNA (gDNA) of seven primates. 
-
+<br>
+For computing both, we use a state-of-the-art DNA sequence compressor (GeCo) that we benchmark with some top compressors in different compression modes. Then, we apply the compressor on DNA sequences with different scales and natures, first, using synthetic sequences and, then, on real DNA sequences. The last include mitochondrial DNA (mtDNA), messenger RNA (mRNA) and genomic DNA (gDNA) of seven primates.
+<br>
 We provide several insights into evolutionary acceleration rates at different scales, namely, the observation and confirmation across the whole genomes of a higher variation rate of the mtDNA relatively to the gDNA. We also show the importance of relative compression for localizing similar information regions using mtDNA.
 </p>
 

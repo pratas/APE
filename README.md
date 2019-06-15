@@ -51,4 +51,8 @@ GDC2
 </pre>
 Although they are installed and used automatically.
 
+Citation:
+Pratas, D., Silva, R., Pinho, A. (2018). Comparison of Compression-Based Measures with Application to the Evolution of Primate Genomes. Entropy, 20(6), 393.
+
+
 License is GPLv3.

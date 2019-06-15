@@ -17,12 +17,12 @@ We provide several insights into evolutionary acceleration rates at different sc
 </p>
 </br>
 
-Download:
+<b>Download:</b>
 <pre>
 git clone https://github.com/pratas/APE.git
 cd APE/
 </pre>
-Run:
+<b>Run:</b>
 <pre>
 chmod +x *.sh
 ./runComparison.sh
@@ -40,7 +40,7 @@ chmod +x *.sh
 
 Attention: external links, namely from NCBI repositories, may be broken with time, although they are easily fixed.
 
-Dependencies:
+<b>Dependencies:</b>
 <pre>
 GeCo
 Goose
@@ -51,8 +51,8 @@ GDC2
 </pre>
 Although they are installed and used automatically.
 
-Citation:
+<b>Citation:</b><br>
 Pratas, D., Silva, R., Pinho, A. (2018). Comparison of Compression-Based Measures with Application to the Evolution of Primate Genomes. Entropy, 20(6), 393.
 
 
-License is GPLv3.
+<b>License</b> is GPLv3.
